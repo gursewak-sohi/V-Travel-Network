@@ -329,16 +329,19 @@
     }
     
     .package-unit {
-        display: block;
+        display: flex;
+        flex-direction: column;
         background-color: rgba(232, 232, 232, 0.5);
         padding: 1.875rem 2.5rem 1.875rem;
         border-radius: 20px;
+        border: none;
         color: var(--gray-700);
         position: relative;
         z-index: 0;
         box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.08);
     }
-    /* .package-unit::after {
+    
+    .package-unit::after {
         content: '';
         position: absolute;
         left: 0;
@@ -350,7 +353,7 @@
         opacity: 0;
         transition: 0.3s all ease;
         border-radius: 20px;
-    } */
+    }
     
     .package-unit.active {
         color: var(--white);
@@ -707,32 +710,32 @@
                 <div class="package-block">
                     <ul class="package-list nav" id="nav-tab" role="tablist">
                         <li>
-                            <a class="package-unit active" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true" href="javascript:;">
+                            <div class="package-unit active" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="11.901" height="19.884" viewBox="0 0 11.901 19.884">
                                         <path id="Path_291" data-name="Path 291" d="M22.194,15.15a1.94,1.94,0,0,0-2.737,0L12.84,21.76,6.227,15.15A1.936,1.936,0,1,0,3.49,17.887l7.982,7.985a1.94,1.94,0,0,0,2.737,0l7.985-7.982a1.94,1.94,0,0,0,0-2.74Z" transform="translate(-14.536 22.76) rotate(-90)" fill="#433633"/>
                                     </svg>
                                 <h4 class="h4">Red Centre <br> Desert Dreaming</h4>
                                 <p class="p">Travel with a small group of 18 in a 4 Wheel Drive vehicle and experience remote private campsites with traditional swag camping or our Comfortable Safari tents complete with beds.</p>
-                            </a>
+                            </div>
                         </li>
                         <li>
-                            <a class="package-unit" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false" href="javascript:;">
+                            <div class="package-unit" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="11.901" height="19.884" viewBox="0 0 11.901 19.884">
                                         <path id="Path_291" data-name="Path 291" d="M22.194,15.15a1.94,1.94,0,0,0-2.737,0L12.84,21.76,6.227,15.15A1.936,1.936,0,1,0,3.49,17.887l7.982,7.985a1.94,1.94,0,0,0,2.737,0l7.985-7.982a1.94,1.94,0,0,0,0-2.74Z" transform="translate(-14.536 22.76) rotate(-90)" fill="#433633"/>
                                     </svg>
                                 <h4 class="h4">Mt Conner 4WD Outback Adventure</h4>
                                 <p class="p">Mt Conner is situated on a vast, fully operational, privately owned cattle station, called Curtin Springs Station. While the dams on the property were constructed for watering cattle, here you will find the perfect natural
                                     habitat for red kangaroos and a vast array of birds and reptiles of the Red Centre.</p>
-                            </a>
+                            </div>
                         </li>
                         <li>
-                            <a class="package-unit" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false" href="javascript:;">
+                            <div class="package-unit" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="11.901" height="19.884" viewBox="0 0 11.901 19.884">
                                         <path id="Path_291" data-name="Path 291" d="M22.194,15.15a1.94,1.94,0,0,0-2.737,0L12.84,21.76,6.227,15.15A1.936,1.936,0,1,0,3.49,17.887l7.982,7.985a1.94,1.94,0,0,0,2.737,0l7.985-7.982a1.94,1.94,0,0,0,0-2.74Z" transform="translate(-14.536 22.76) rotate(-90)" fill="#433633"/>
                                     </svg>
                                 <h4 class="h4">Perentie Dreaming</h4>
                                 <p class="p">Join this 4 Day 4WD Central Australia adventure tour for the ultimate Outback travel experience to Uluru and often missed Red Centre highlights.</p>
-                            </a>
+                            </div>
                         </li>
                     </ul>
                     <div class="tab-content" id="v-pills-tabContent">
