@@ -1,0 +1,363 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Brochures</title>
+    <link rel="shortcut icon" href="images/svg/favicon.svg" />
+    <!-- Booststrap CSS -->
+    <link rel="stylesheet" href="bootstrap/bootstrap.css">
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!-- Brochures Page Style -->
+<style>
+    /* Brochures Section CSS */
+    
+    .brochures-section {
+        padding: 4.5rem 0 3.5rem;
+    }
+    
+    .brochures-block {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 1.875rem;
+    }
+    
+    .brochures-unit {
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.08);
+        border-radius: 20px;
+        padding: 1rem 0 0;
+    }
+    
+    .brochures-content {
+        background-color: var(--gray-400);
+        padding: 1.375rem 1.563rem 1.688rem;
+    }
+    
+    .brochures-content h6 {
+        color: var(--gray-900);
+        font-size: max(1.125rem, 16px);
+        font-weight: 500;
+        line-height: max(1.563rem, 22px);
+        margin-bottom: 10px;
+    }
+    
+    .brochures-field {
+        margin-top: 1.125rem;
+    }
+    
+    .brochures-field label {
+        font-size: 12px;
+        line-height: 14px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 4px;
+    }
+    
+    .brochures-field label img {
+        margin-left: 4px;
+    }
+    
+    .brochures-input {
+        height: 40px;
+        display: flex;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+    
+    .brochures-input input {
+        flex: 1;
+        background-color: var(--gray-300);
+        border: none;
+        border-radius: 0;
+        padding: 0 16px;
+        font-size: 10px;
+        height: 100%;
+    }
+    
+    .brochures-input .btn-send {
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0 50px 50px 0;
+        height: 100%;
+        padding-right: 14px;
+    }
+    
+    @media (max-width: 991px) {
+        .brochures-block {
+            max-width: 80%;
+            margin: 0 auto;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .brochures-unit:nth-child(3),
+        .brochures-unit:nth-child(4) {
+            margin-top: 1.875rem;
+        }
+    }
+    
+    @media (max-width: 767px) {
+        .brochures-block {
+            max-width: 100%;
+            margin: 0 auto;
+            grid-template-columns: 1fr;
+        }
+        .brochures-unit:not(:first-child) {
+            margin-top: 1.875rem;
+        }
+    }
+</style>
+
+<body class="inner-pages">
+    <!-- Header Sectioin -->
+    <header class="header">
+        <nav class="navbar navbar-expand-xl">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="home.html">
+                    <img class="img-fluid" src="images/svg/logo.svg" width="280" height="140" alt="icon" />
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#headerToggler" aria-controls="headerToggler" aria-expanded="false" aria-label="Toggle navigation">
+                  <svg fill="#1E3962" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="24px" height="24px"><path d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"/></svg>
+                </button>
+                <div class="collapse navbar-collapse" id="headerToggler">
+                    <div class="header-search">
+                        <label>Let’s travel to:</label>
+                        <div class="header-field">
+                            <input type="text" />
+                            <button type="button" class="btn btn-gradient btn-search">
+                                <img src="images/svg/search.svg" alt="icon"/>
+                            </button>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav">
+                        <li>
+                            <a href="javascript:;">Destinations</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Adventure Styles</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Blog</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Contact</a>
+                        </li>
+                    </ul>
+                    <a href="javascript:;" class="btn btn-gradient btn-md">Quick enquiry</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Heading Section  -->
+        <section class="heading-section">
+            <div class="heading-image">
+                <img class="full-cover" src="images/brochures-bg.png" width="1920" height="539" alt="banner">
+            </div>
+            <div class="heading-block">
+                <div class="container">
+                    <div class="heading-text">
+                        <h2 class="h2">Brochures</h2>
+                        <p class="p">If you are an Australia based travel agent, you can request brochure supplies via TIFS Brochure Distribution If you are a New Zealand based travel agent, you can request brochure supplies via BrochureNet</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brochures Section -->
+        <section class="brochures-section">
+            <div class="container">
+                <div class="brochures-block">
+                    <div class="brochures-unit">
+                        <div class="brochures-image">
+                            <img class="full-cover" src="images/new-zealand.png" width="387" height="534" alt="brochure">
+                        </div>
+                        <div class="brochures-content">
+                            <h6>Independent Adventures New Zealand</h6>
+                            <a class="btn btn-gradient btn-xxs" href="javascript:;">Download (pdf)</a>
+                            <div class="brochures-field">
+                                <label>Send direct to inbox <img src="images/svg/info.svg" alt="icon"/></label>
+                                <div class="brochures-input">
+                                    <input type="email" placeholder="Email address" />
+                                    <button class="btn btn-gradient btn-send">
+                                        <img src="images/svg/send.svg" alt="icon"/>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="brochures-unit">
+                        <div class="brochures-image">
+                            <img class="full-cover" src="images/new-zealand.png" width="387" height="534" alt="brochure">
+                        </div>
+                        <div class="brochures-content">
+                            <h6>Independent Adventures New Zealand</h6>
+                            <a class="btn btn-gradient btn-xxs" href="javascript:;">Download (pdf)</a>
+                            <div class="brochures-field">
+                                <label>Send direct to inbox <img src="images/svg/info.svg" alt="icon"/></label>
+                                <div class="brochures-input">
+                                    <input type="email" placeholder="Email address" />
+                                    <button class="btn btn-gradient btn-send">
+                                        <img src="images/svg/send.svg" alt="icon"/>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="brochures-unit">
+                        <div class="brochures-image">
+                            <img class="full-cover" src="images/new-zealand.png" width="387" height="534" alt="brochure">
+                        </div>
+                        <div class="brochures-content">
+                            <h6>Independent Adventures New Zealand</h6>
+                            <a class="btn btn-gradient btn-xxs" href="javascript:;">Download (pdf)</a>
+                            <div class="brochures-field">
+                                <label>Send direct to inbox <img src="images/svg/info.svg" alt="icon"/></label>
+                                <div class="brochures-input">
+                                    <input type="email" placeholder="Email address" />
+                                    <button class="btn btn-gradient btn-send">
+                                        <img src="images/svg/send.svg" alt="icon"/>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="brochures-unit">
+                        <div class="brochures-image">
+                            <img class="full-cover" src="images/new-zealand.png" width="387" height="534" alt="brochure">
+                        </div>
+                        <div class="brochures-content">
+                            <h6>Independent Adventures New Zealand</h6>
+                            <a class="btn btn-gradient btn-xxs" href="javascript:;">Download (pdf)</a>
+                            <div class="brochures-field">
+                                <label>Send direct to inbox <img src="images/svg/info.svg" alt="icon"/></label>
+                                <div class="brochures-input">
+                                    <input type="email" placeholder="Email address" />
+                                    <button class="btn btn-gradient btn-send">
+                                        <img src="images/svg/send.svg" alt="icon"/>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- Marqee Section -->
+        <section class="marquee-section">
+            <div class="marquee">
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+            </div>
+        </section>
+
+        <!-- Subscribe Section -->
+        <section class="subscribe-section">
+            <div class="container">
+                <div class="subscribe-block">
+                    <h3>Discover new travel destinations + hear about our exclusive deals</h3>
+                    <form class="subscribe-form" action="">
+                        <div class="input-block">
+                            <label>Name</label>
+                            <input type="text" required />
+                        </div>
+                        <div class="input-block">
+                            <label>Email address</label>
+                            <input type="email" required />
+                        </div>
+                        <button class="btn btn-outline btn-md">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <section class="footer-section">
+            <div class="container">
+                <div class="footer-block">
+                    <a class="footer-brand" href="home.html">
+                        <img class="img-fluid" src="images/svg/logo-white.svg" alt="icon" />
+                    </a>
+                    <div class="footer-content">
+                        <div class="footer-unit">
+                            <h4>Company</h4>
+                            <ul>
+                                <li><a href="javascript:;">About us</a></li>
+                                <li><a href="javascript:;"> Our Partners</a></li>
+                                <li><a href="javascript:;"> Brochure Request</a></li>
+                                <li><a href="javascript:;">Send Quick Enquiry</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-unit">
+                            <h4>Tour operators</h4>
+                            <ul>
+                                <li><a href="javascript:;"> Fez Travel</a></li>
+                                <li><a href="javascript:;">Moose Travel Network</a></li>
+                                <li><a href="javascript:;">Bamba Experience</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-unit">
+                            <h4>Latest deals</h4>
+                            <ul>
+                                <li><a href="javascript:;">Tour marked in category</a></li>
+                                <li><a href="javascript:;"> Tour marked in category</a></li>
+                                <li><a href="javascript:;">Tour marked in category</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-unit">
+                            <h4>Sample</h4>
+                            <ul>
+                                <li><a href="javascript:;">Sample Link</a></li>
+                                <li><a href="javascript:;">Sample Link</a></li>
+                                <li><a href="javascript:;">Sample Link</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+
+    <!-- JQuery JS -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="bootstrap/bootstrap.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

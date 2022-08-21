@@ -35,6 +35,7 @@
     --gray-900: #221E22;
     --gray-700: #433633;
     --gray-500: #707070;
+    --gray-400: #f7f7f7;
     --gray-300: #E8E8E8;
     /* input BG */
     --gray-200: #F3F3F3;
@@ -66,15 +67,15 @@
     }
 }
 
-@media (max-width: 767px) {
-     :root {
-        --base-font-size: 0.6rem;
-    }
-}
-
 @media (max-width: 991px) {
      :root {
         --gutter-x: 12px;
+    }
+}
+
+@media (max-width: 767px) {
+     :root {
+        --base-font-size: 0.6rem;
     }
 }
 
@@ -318,6 +319,15 @@ main {
     text-transform: uppercase;
     font-size: max(0.875rem, 12px);
     padding: 11px 23px;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    border-radius: 50px;
+}
+
+.btn-xxs {
+    text-transform: uppercase;
+    font-size: max(0.813rem, 12px);
+    padding: max(0.75rem, 11px) 16px;
     letter-spacing: 0.1em;
     font-weight: 700;
     border-radius: 50px;
