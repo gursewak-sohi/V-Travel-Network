@@ -428,7 +428,7 @@ main {
     border-radius: 0;
     padding: 0 max(1.125rem, 18px);
     font-size: max(1rem, 14px);
-    height: max(3.125rem, 45px);
+    height: max(3.125rem, 42px);
 }
 
 .header-field .btn-search {
@@ -437,7 +437,7 @@ main {
     justify-content: center;
     align-items: center;
     border-radius: 0 50px 50px 0;
-    height: max(3.125rem, 45px);
+    height: max(3.125rem, 42px);
     padding-right: 1rem;
 }
 
@@ -647,7 +647,7 @@ main {
 .subscribe-form .input-block input {
     padding: 0 max(1.125rem, 14px);
     font-size: max(1rem, 14px);
-    height: max(3.125rem, 45px);
+    height: max(3.125rem, 42px);
     background-color: var(--gray-300);
     border-radius: 40px;
     border: none;
