@@ -1,0 +1,896 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link rel="shortcut icon" href="images/favicon.svg" />
+    <!-- Booststrap CSS -->
+    <link rel="stylesheet" href="bootstrap/bootstrap.css">
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!-- Home Page Style -->
+<style>
+    /* Banner Section CSS */
+    
+    .banner-block {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+    }
+    
+    .banner-image {
+        width: 100%;
+        height: 67.5rem;
+    }
+    
+    .banner-content {
+        padding: 0 5rem;
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        max-width: 60rem;
+        align-items: center;
+    }
+    
+    .banner-content::after {
+        position: absolute;
+        width: 51.75rem;
+        height: 28.25rem;
+        content: '';
+        left: 50%;
+        transform: translateX(-50%);
+        margin-left: 1.813rem;
+        top: 4.5rem;
+        background-image: url(images/svg/aero-path.svg);
+        z-index: -1;
+        background-size: cover;
+    }
+    
+    .banner-text {
+        margin-left: -2rem;
+    }
+    
+    .banner-content h1 {
+        max-width: 37.875rem;
+        margin-bottom: 2rem;
+        margin-top: 10.125rem;
+    }
+    
+    .banner-content h4 {
+        max-width: 21.688rem;
+        font-size: max(1.375rem, 15px);
+        line-height: 1.875rem;
+        color: var(--gray-900);
+        margin-bottom: max(1.75rem, 20px);
+        font-weight: 700;
+    }
+    
+    .banner-content h5 {
+        font-size: max(1rem, 12px);
+        line-height: 1.188rem;
+        color: var(--gray-900);
+        margin-bottom: max(0.688rem, 10px);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+    }
+    
+    .search-block {
+        max-width: 32.75rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: max(2.063rem, 25px);
+    }
+    
+    .search-block label {
+        font-weight: 700;
+        font-size: max(1rem, 12px);
+        letter-spacing: 0.1em;
+        line-height: 1.188rem;
+        margin-bottom: max(0.625rem, 10px);
+        text-transform: uppercase;
+        color: var(--gray-900);
+    }
+    
+    .search-field {
+        display: flex;
+        border-radius: 50px;
+        overflow: hidden;
+    }
+    
+    .search-field input {
+        flex: 1;
+        background-color: var(--gray-300);
+        border: none;
+        padding: 0 max(1.125rem, 14px);
+        font-size: max(1rem, 14px);
+        height: max(3.125rem, 42px);
+    }
+    
+    .search-field .btn-search {
+        width: max(3.438rem, 50px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0 50px 50px 0;
+        height: max(3.125rem, 42px);
+        padding-right: 1rem;
+    }
+    
+    .search-field .btn-search img {
+        width: 1.5rem;
+    }
+    
+    @media (max-width:1199px) {
+        .banner-content h1 {
+            margin-top: 3.125rem;
+        }
+        .banner-content::after {
+            width: 44.75rem;
+            height: 23.25rem;
+        }
+    }
+    
+    @media (max-width:991px) {
+        .banner-block {
+            grid-template-columns: 1fr;
+        }
+        .banner-image {
+            height: 44.5rem;
+        }
+        .banner-text {
+            width: 100%;
+            max-width: 80%;
+            margin: 70px auto 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .banner-content {
+            max-width: 100%;
+            padding: 0 12px;
+        }
+        .banner-content::after {
+            margin-left: 0;
+            top: -3.5rem;
+        }
+        .banner-content h1 {
+            max-width: 42.875rem;
+        }
+        .banner-content h4 {
+            max-width: 100%;
+        }
+    }
+    
+    @media (max-width:767px) {
+        .banner-content h1 {
+            max-width: 29.875rem;
+        }
+        .banner-image {
+            height: 420px;
+        }
+        .banner-text {
+            max-width: 100%;
+            margin: 45px auto 0;
+        }
+        .banner-content::after {
+            width: 38.75rem;
+            height: 21.95rem;
+            margin-left: 0;
+            top: -3.5rem;
+        }
+    }
+    /* Wholesale Section CSS */
+    
+    .wholesale-section {
+        position: relative;
+        background-color: var(--brown);
+        padding: 2.875rem 0;
+        z-index: 1;
+        margin-top: -2.875rem;
+    }
+    
+    .wholesale-section::after {
+        position: absolute;
+        width: 120.625rem;
+        height: 8.688rem;
+        content: '';
+        left: 50%;
+        top: -7.313rem;
+        background-image: url(images/svg/home-cut.svg);
+        background-repeat: no-repeat;
+        z-index: -1;
+        background-size: cover;
+        transform: translateX(-50%);
+    }
+    
+    .wholesale-block {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .wholesale-content {
+        color: var(--white);
+    }
+    
+    .wholesale-content h4 {
+        margin-bottom: 1.188rem;
+    }
+    
+    .wholesale-content p {
+        font-size: max(1.125rem, 14px);
+        line-height: max(1.875rem, 20px);
+        margin-bottom: 2.125rem;
+    }
+    
+    .wholesale-quick {
+        color: var(--white);
+        margin-left: 9.625rem;
+        width: 32.875rem;
+        margin-top: 0.625rem;
+    }
+    
+    .wholesale-quick h4 {
+        font-weight: 500;
+        font-size: max(1.25rem, 14px);
+        line-height: max(1.5rem, 22px);
+        margin-bottom: 0.313rem;
+    }
+    
+    .wholesale-quick ul li {
+        display: flex;
+        align-items: center;
+    }
+    
+    .wholesale-quick ul li a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--white);
+        height: max(3.125rem, 42px);
+        width: 100%;
+        font-size: 14px;
+        padding-right: 0.563rem;
+        transition: 0.3s all ease;
+    }
+    
+    .wholesale-quick ul li a:hover {
+        opacity: 0.8;
+    }
+    
+    .wholesale-quick ul li:not(:last-child) {
+        border-bottom: 1px solid var(--gray-100);
+    }
+    
+    @media (max-width:991px) {
+        .wholesale-section {
+            margin-top: 120px;
+        }
+        .wholesale-block {
+            grid-template-columns: 1fr;
+        }
+        .wholesale-content {
+            max-width: 80%;
+            margin: 0 auto 40px;
+        }
+        .wholesale-quick {
+            margin-left: auto;
+            width: 100%;
+            margin-top: 0;
+            max-width: 80%;
+            margin-right: auto;
+        }
+    }
+    
+    @media (max-width:767px) {
+        .wholesale-section {
+            margin-top: 100px;
+        }
+        .wholesale-content {
+            max-width: 100%;
+            text-align: center;
+        }
+        .wholesale-quick {
+            max-width: 100%;
+        }
+    }
+    /* Package Section CSS */
+    
+    .package-section {
+        padding: 4.375rem 0;
+    }
+    
+    .package-block {
+        margin-top: 2.375rem;
+        display: grid;
+        grid-template-columns: 33.063rem auto;
+        column-gap: 1.688rem;
+    }
+    
+    .package-block .tab-content>div {
+        height: 100%;
+    }
+    
+    .package-list {
+        flex-direction: column;
+        display: flex;
+        row-gap: 1.875rem;
+    }
+    
+    .package-unit {
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(232, 232, 232, 0.5);
+        padding: 1.875rem 2.5rem 1.875rem;
+        border-radius: 20px;
+        color: var(--gray-700);
+        position: relative;
+        overflow: hidden;
+        z-index: 0;
+        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.08);
+    }
+    
+    .package-unit::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, var(--red-700) 0%, var(--red-900) 100%);
+        z-index: -1;
+        opacity: 0;
+        transition: 0.3s all ease;
+    }
+    
+    .package-unit.active {
+        color: var(--white);
+    }
+    
+    .package-unit:hover {
+        color: var(--white);
+    }
+    
+    .package-unit.active::after {
+        opacity: 1;
+    }
+    
+    .package-unit:hover::after {
+        opacity: 1;
+    }
+    
+    .package-unit h4 {
+        max-width: 24rem;
+        margin-bottom: 0.938rem;
+        font-weight: 500;
+    }
+    
+    .package-unit.active h4 {
+        font-weight: 700;
+    }
+    
+    .package-unit svg {
+        position: absolute;
+        top: 2.188rem;
+        right: 2.188rem
+    }
+    
+    .package-unit svg path {
+        transition: 0.3s all ease;
+        fill: var(--gray-700);
+    }
+    
+    .package-unit.active svg path {
+        fill: var(--white);
+    }
+    
+    .package-unit:hover svg path {
+        fill: var(--white);
+    }
+    
+    .package-image {
+        width: 100%;
+        height: 100%;
+        min-height: 45.25rem;
+        position: relative;
+    }
+    
+    .package-image .credit {
+        position: absolute;
+        right: 0;
+        font-size: 1rem;
+        line-height: 3.75rem;
+        text-align: right;
+        color: var(--gray-900);
+        opacity: 0.5;
+        width: 100%;
+        left: 0;
+        bottom: -0.375rem;
+        height: 1.125rem;
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    @media (max-width:991px) {
+        .package-block {
+            grid-template-columns: 1fr;
+            max-width: 80%;
+            margin: 2.375rem auto 0;
+        }
+        .package-section .h3 {
+            text-align: center;
+        }
+        .package-list {
+            row-gap: 0;
+        }
+        .package-list>li {
+            margin-bottom: 1.875rem;
+        }
+    }
+    
+    @media (max-width:767px) {
+        .package-block {
+            max-width: 100%;
+        }
+    }
+    /* Blog Post CSS */
+    
+    .post-section {
+        background-color: var(--gray-200);
+        position: relative;
+        padding-top: 12.5rem;
+        margin-bottom: -4.125rem;
+    }
+    
+    .post-section::before {
+        position: absolute;
+        width: 59.375rem;
+        height: 16.5rem;
+        content: '';
+        left: 50%;
+        background-image: url(images/svg/aero-path-2.svg);
+        background-size: cover;
+        transform: translateX(-50%);
+        margin-left: 22.063rem;
+        z-index: 1;
+        top: -1.25rem;
+    }
+    
+    .post-section::after {
+        position: absolute;
+        width: 120.625rem;
+        height: 8.688rem;
+        content: '';
+        left: 50%;
+        top: 0;
+        background-image: url(images/svg/home-cut-2.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        transform: translateX(-50%);
+    }
+    
+    .post-block {
+        display: flex;
+        column-gap: 1.25rem;
+    }
+    
+    .post-images {
+        width: 56.25rem;
+        position: relative;
+        top: -2.063rem;
+        left: -3.688rem;
+    }
+    
+    .post-content h3 {
+        margin-bottom: 1.313rem;
+    }
+    
+    .post-content h4 {
+        margin-bottom: 1.375rem;
+        max-width: 30rem;
+        font-weight: 500;
+    }
+    
+    .post-content p {
+        margin-bottom: max(1.313rem, 16px);
+        max-width: 33.25rem;
+    }
+    
+    .post-content ul {
+        display: flex;
+        margin-bottom: 16px;
+    }
+    
+    .post-content ul li {
+        font-weight: 700;
+        font-size: max(0.875rem, 13px);
+        letter-spacing: 0.1em;
+        line-height: 17px;
+        color: var(--red-900);
+        text-transform: uppercase;
+        padding-left: 1.188rem;
+        white-space: nowrap;
+        position: relative;
+    }
+    
+    .post-content ul li:not(:last-child) {
+        margin-right: 1.313rem;
+    }
+    
+    .post-content ul li::before {
+        position: absolute;
+        left: 0;
+        top: 5px;
+        width: 8px;
+        height: 8px;
+        background-color: var(--red-900);
+        border: 1px solid var(--gray-500);
+        border-radius: 50%;
+        content: '';
+    }
+    
+    @media (max-width:1199px) {
+        .post-section {
+            padding-bottom: 5.5rem;
+            margin-bottom: 0;
+        }
+    }
+    
+    @media (max-width:991px) {
+        .post-block {
+            flex-direction: column;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+        .post-images {
+            top: 0;
+            left: 0;
+            margin: 0 auto;
+        }
+        .post-content {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .post-content h4 {
+            max-width: 100%;
+        }
+        .post-content p {
+            max-width: 100%;
+        }
+        .post-section::before {
+            margin-left: 0;
+        }
+    }
+    
+    @media (max-width:767px) {
+        .post-section {
+            padding-top: 90px;
+        }
+        .post-block {
+            max-width: 100%;
+        }
+        .post-images {
+            width: 100%;
+        }
+        .post-section::before {
+            width: 35.975rem;
+            height: 10rem;
+            top: 2.75rem;
+        }
+        .post-content ul {
+            flex-direction: column;
+            align-items: center;
+        }
+        .post-content ul li:not(:last-child) {
+            margin-right: 0;
+            margin-bottom: 1.313rem;
+        }
+    }
+</style>
+
+<body>
+    <!-- Header Sectioin -->
+    <header class="header">
+        <nav class="navbar navbar-expand-xl">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="home.html">
+                    <img class="img-fluid" src="images/svg/logo.svg" width="280" height="140" alt="icon" />
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#headerToggler" aria-controls="headerToggler" aria-expanded="false" aria-label="Toggle navigation">
+                  <svg fill="#1E3962" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="24px" height="24px"><path d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"/></svg>
+                </button>
+                <div class="collapse navbar-collapse" id="headerToggler">
+                    <ul class="navbar-nav ms-auto">
+                        <li>
+                            <a href="javascript:;">Destinations</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Adventure Styles</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Blog</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Banner Section -->
+        <section class="banner-section">
+            <div class="banner-block">
+                <div class="banner-image">
+                    <img class="full-cover" src="images/banner-bg.png" width="960" height="1080" alt="banner" />
+                </div>
+                <div class="banner-content">
+                    <div class="banner-text">
+                        <h1 class="h1">Providing tailored travel experiences like no other.</h1>
+                        <h4>Fully immerse yourself in the countries you visit.</h4>
+                        <div class="search-block">
+                            <label>Let’s travel to:</label>
+                            <div class="search-field">
+                                <input type="text" />
+                                <button type="button" class="btn btn-gradient btn-search">
+                                <img src="images/svg/search.svg" alt="icon"/>
+                            </button>
+                            </div>
+                        </div>
+                        <h5> <span class="text-red-900">Or</span> send us a quick enquiry:</h5>
+                        <button type="button" class="btn btn-gradient btn-md">Quick enquiry</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Whole Sale Section -->
+        <section class="wholesale-section">
+            <div class="container">
+                <div class="wholesale-block">
+                    <div class="wholesale-content">
+                        <h4 class="h4">Trailed travel wholesale for Travel Agents</h4>
+                        <p>V Travel Network is a niche wholesaler providing representation in Australia and New Zealand, for International Operators providing services for the Independent (and sometimes not so Independent) Traveller.</p>
+                        <a href="javascript:;" class="btn btn-gradient btn-xs">Read about us</a>
+                    </div>
+                    <div class="wholesale-quick">
+                        <h4>Quick Find</h4>
+                        <ul>
+                            <li>
+                                <a href="javascript:;">
+                                    <span>Browse Our Tours</span>
+                                    <img src="images/svg/arrow-right.svg" alt="icon" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <span>Send a Quick Enquiry</span>
+                                    <img src="images/svg/arrow-right.svg" alt="icon" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <span>Request a Brochure</span>
+                                    <img src="images/svg/arrow-right.svg" alt="icon" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <span>See Latest Deals</span>
+                                    <img src="images/svg/arrow-right.svg" alt="icon" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Package Section -->
+        <section class="package-section">
+            <div class="container">
+                <h3 class="h3">Get a <span class="text-red-900">great package</span> with our current deals</h3>
+                <div class="package-block">
+                    <ul class="package-list nav" id="nav-tab" role="tablist">
+                        <li>
+                            <a class="package-unit active" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true" href="javascript:;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="11.901" height="19.884" viewBox="0 0 11.901 19.884">
+                                        <path id="Path_291" data-name="Path 291" d="M22.194,15.15a1.94,1.94,0,0,0-2.737,0L12.84,21.76,6.227,15.15A1.936,1.936,0,1,0,3.49,17.887l7.982,7.985a1.94,1.94,0,0,0,2.737,0l7.985-7.982a1.94,1.94,0,0,0,0-2.74Z" transform="translate(-14.536 22.76) rotate(-90)" fill="#433633"/>
+                                    </svg>
+                                <h4 class="h4">Red Centre <br> Desert Dreaming</h4>
+                                <p class="p">Travel with a small group of 18 in a 4 Wheel Drive vehicle and experience remote private campsites with traditional swag camping or our Comfortable Safari tents complete with beds.</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="package-unit" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false" href="javascript:;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="11.901" height="19.884" viewBox="0 0 11.901 19.884">
+                                        <path id="Path_291" data-name="Path 291" d="M22.194,15.15a1.94,1.94,0,0,0-2.737,0L12.84,21.76,6.227,15.15A1.936,1.936,0,1,0,3.49,17.887l7.982,7.985a1.94,1.94,0,0,0,2.737,0l7.985-7.982a1.94,1.94,0,0,0,0-2.74Z" transform="translate(-14.536 22.76) rotate(-90)" fill="#433633"/>
+                                    </svg>
+                                <h4 class="h4">Mt Conner 4WD Outback Adventure</h4>
+                                <p class="p">Mt Conner is situated on a vast, fully operational, privately owned cattle station, called Curtin Springs Station. While the dams on the property were constructed for watering cattle, here you will find the perfect natural
+                                    habitat for red kangaroos and a vast array of birds and reptiles of the Red Centre.</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="package-unit" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false" href="javascript:;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="11.901" height="19.884" viewBox="0 0 11.901 19.884">
+                                        <path id="Path_291" data-name="Path 291" d="M22.194,15.15a1.94,1.94,0,0,0-2.737,0L12.84,21.76,6.227,15.15A1.936,1.936,0,1,0,3.49,17.887l7.982,7.985a1.94,1.94,0,0,0,2.737,0l7.985-7.982a1.94,1.94,0,0,0,0-2.74Z" transform="translate(-14.536 22.76) rotate(-90)" fill="#433633"/>
+                                    </svg>
+                                <h4 class="h4">Perentie Dreaming</h4>
+                                <p class="p">Join this 4 Day 4WD Central Australia adventure tour for the ultimate Outback travel experience to Uluru and often missed Red Centre highlights.</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <div class="package-image">
+                                <img class="full-cover" src="images/package-1.png" width="1082" height="724" alt="package">
+                                <span class="credit">Image credit  to Source Example</span>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                            <div class="package-image">
+                                <img class="full-cover" src="images/package-1.png" width="1082" height="724" alt="package">
+                                <span class="credit">Image credit  to Source Example</span>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                            <div class="package-image">
+                                <img class="full-cover" src="images/package-1.png" width="1082" height="724" alt="package">
+                                <span class="credit">Image credit  to Source Example</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Post Section -->
+        <section class="post-section">
+            <div class="container">
+                <div class="post-block">
+                    <div class="post-images">
+                        <img class="full-cover" src="images/frames.png" width="900" height="522" alt="frames">
+                    </div>
+                    <div class="post-content">
+                        <h3 class="h3">V Travel Fix Blog</h3>
+                        <h4 class="h4">Discovering Machu Picchu through the Choquequirao Trek</h4>
+                        <p class="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu velit sed elit dignissim ultricies. Aliquam eu finibus sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt aliquam risus, sed ultrices
+                            urna tristique ut. </p>
+                        <ul>
+                            <li>Peru</li>
+                            <li>South America</li>
+                            <li>Hiking adventures</li>
+                        </ul>
+                        <a href="javascript:;" class="btn btn-gradient btn-xs">READ THE POST</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- Marqee Section -->
+        <section class="marquee-section">
+            <div class="marquee">
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+            </div>
+        </section>
+
+        <!-- Subscribe Section -->
+        <section class="subscribe-section">
+            <div class="container">
+                <div class="subscribe-block">
+                    <h3>Discover new travel destinations + hear about our exclusive deals</h3>
+                    <form class="subscribe-form" action="">
+                        <div class="input-block">
+                            <label>Name</label>
+                            <input type="text" required />
+                        </div>
+                        <div class="input-block">
+                            <label>Email address</label>
+                            <input type="email" required />
+                        </div>
+                        <button class="btn btn-outline btn-md">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <section class="footer-section">
+            <div class="container">
+                <div class="footer-block">
+                    <a class="footer-brand" href="home.html">
+                        <img class="img-fluid" src="images/svg/logo-white.svg" alt="icon" />
+                    </a>
+                    <div class="footer-content">
+                        <div class="footer-unit">
+                            <h4>Company</h4>
+                            <ul>
+                                <li><a href="javascript:;">About us</a></li>
+                                <li><a href="javascript:;"> Our Partners</a></li>
+                                <li><a href="javascript:;"> Brochure Request</a></li>
+                                <li><a href="javascript:;">Send Quick Enquiry</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-unit">
+                            <h4>Tour operators</h4>
+                            <ul>
+                                <li><a href="javascript:;"> Fez Travel</a></li>
+                                <li><a href="javascript:;">Moose Travel Network</a></li>
+                                <li><a href="javascript:;">Bamba Experience</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-unit">
+                            <h4>Latest deals</h4>
+                            <ul>
+                                <li><a href="javascript:;">Tour marked in category</a></li>
+                                <li><a href="javascript:;"> Tour marked in category</a></li>
+                                <li><a href="javascript:;">Tour marked in category</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-unit">
+                            <h4>Sample</h4>
+                            <ul>
+                                <li><a href="javascript:;">Sample Link</a></li>
+                                <li><a href="javascript:;">Sample Link</a></li>
+                                <li><a href="javascript:;">Sample Link</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+
+    <!-- JQuery JS -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="bootstrap/bootstrap.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
