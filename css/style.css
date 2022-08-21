@@ -307,7 +307,7 @@ main {
 
 .btn-md {
     text-transform: uppercase;
-    font-size: max(1rem, 14px);
+    font-size: max(1rem, 13px);
     padding: max(0.75rem, 11px) max(1.625rem, 23px);
     letter-spacing: 0.1em;
     font-weight: 700;
@@ -316,7 +316,7 @@ main {
 
 .btn-xs {
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: max(0.875rem, 12px);
     padding: 11px 23px;
     letter-spacing: 0.1em;
     font-weight: 700;
