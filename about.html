@@ -1,0 +1,516 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About</title>
+    <link rel="shortcut icon" href="images/svg/favicon.svg" />
+    <!-- Booststrap CSS -->
+    <link rel="stylesheet" href="bootstrap/bootstrap.css">
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!-- About Page Style -->
+<style>
+    /* About Section CSS */
+    
+    .about-section {
+        padding: 4.063rem 0 2.375rem;
+    }
+    
+    .about-block {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 1.875rem;
+    }
+    
+    .about-block h4 {
+        font-size: max(1.438rem, 20px);
+        line-height: max(1.875rem, 28px);
+    }
+    
+    .about-block p:not(:first-child) {
+        margin-top: 10px;
+    }
+    
+    .about-block div:nth-child(2) p:not(:first-child) {
+        margin-top: 1.25rem;
+    }
+    
+    @media (max-width:991px) {
+        .about-block {
+            grid-template-columns: 1fr;
+            max-width: 80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .about-block p {
+            margin-top: 1.25rem;
+        }
+    }
+    
+    @media (max-width:767px) {
+        .about-block {
+            max-width: 100%;
+        }
+    }
+    /* Support Section CSS */
+    
+    .support-section {
+        padding: 11.938rem 0 3.125rem;
+        background-color: var(--gray-200);
+        position: relative;
+    }
+    
+    .support-section::after {
+        position: absolute;
+        width: 120.625rem;
+        height: 8.688rem;
+        content: '';
+        left: 50%;
+        top: 0;
+        background-image: url(images/svg/member-cut.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        transform: translateX(-50%);
+    }
+    
+    .support-block {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 10rem;
+    }
+    
+    .support-content h4 {
+        margin-bottom: 2.688rem;
+        font-weight: 500;
+    }
+    
+    .support-content img:not(:last-child) {
+        margin-right: 3.063rem;
+    }
+    
+    .support-content:nth-child(1) img:nth-child(1) {
+        width: 12.313rem;
+        height: 3.813rem;
+    }
+    
+    .support-content:nth-child(1) img:nth-child(2) {
+        width: 9.25rem;
+        height: 3.625rem;
+    }
+    
+    .support-content:nth-child(1) img:nth-child(3) {
+        width: 5.938rem;
+        height: 5.063rem;
+    }
+    
+    .support-content:nth-child(2) img:nth-child(1) {
+        width: 9.563rem;
+        height: 4.688rem;
+    }
+    
+    .support-content:nth-child(2) img:nth-child(2) {
+        width: 13.625rem;
+        height: 4.688rem;
+    }
+    
+    .support-content:nth-child(2) img:nth-child(3) {
+        width: 11.875rem;
+        height: 4.688rem;
+    }
+    
+    @media (max-width:1499px) {
+        .support-block {
+            column-gap: 0rem;
+        }
+    }
+    
+    @media (max-width:1199px) {
+        .support-content img:not(:last-child) {
+            margin-right: 2.063rem;
+        }
+    }
+    
+    @media (max-width:991px) {
+        .support-section {
+            padding: 9.938rem 0 3.125rem;
+        }
+        .support-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .support-content:nth-child(2) {
+            margin-top: 30px;
+        }
+    }
+    
+    @media (max-width:767px) {
+        .support-images {
+            display: flex;
+            transform: scale(0.9);
+        }
+    }
+    /* Team Section CSS */
+    
+    .team-section {
+        padding: 3.875rem 0 3.313rem;
+    }
+    
+    .team-list {
+        margin-top: 2.25rem;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        column-gap: 1.875rem;
+    }
+    
+    .team-unit {
+        margin-bottom: 2.688rem;
+    }
+    
+    .team-image {
+        width: 100%;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 1.25rem;
+    }
+    
+    @media (max-width:991px) {
+        .team-block h4 {
+            text-align: center;
+        }
+        .team-list {
+            max-width: 80%;
+            margin: 2.25rem auto 0;
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+    
+    @media (max-width:767px) {
+        .team-list {
+            max-width: 100%;
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+</style>
+
+<body class="inner-pages">
+    <!-- Header Sectioin -->
+    <header class="header">
+        <nav class="navbar navbar-expand-xl">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="home.html">
+                    <img class="img-fluid" src="images/svg/logo.svg" width="280" height="140" alt="icon" />
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#headerToggler" aria-controls="headerToggler" aria-expanded="false" aria-label="Toggle navigation">
+                  <svg fill="#1E3962" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="24px" height="24px"><path d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"/></svg>
+                </button>
+                <div class="collapse navbar-collapse" id="headerToggler">
+                    <div class="header-search">
+                        <label>Let’s travel to:</label>
+                        <div class="header-field">
+                            <input type="text" />
+                            <button type="button" class="btn btn-gradient btn-search">
+                                <img src="images/svg/search.svg" alt="icon"/>
+                            </button>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav">
+                        <li>
+                            <a href="javascript:;">Destinations</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Adventure Styles</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Blog</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Contact</a>
+                        </li>
+                    </ul>
+                    <a href="javascript:;" class="btn btn-gradient btn-md">Quick enquiry</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Heading Section  -->
+        <section class="heading-section">
+            <div class="heading-image">
+                <img class="full-cover" src="images/about-bg.jpg" width="1920" height="539" alt="banner">
+            </div>
+            <div class="heading-block">
+                <div class="container">
+                    <div class="heading-text">
+                        <h2 class="h2">About Us</h2>
+                        <p class="p">V Travel Network is a niche wholesaler providing representation in Australia and New Zealand, for International Operators providing services for the Independent (and sometimes not so Independent) Traveller.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section">
+            <div class="container">
+                <div class="about-block">
+                    <div>
+                        <h4>We proudly represent Bamba Experience (World) , Moose Travel (Canada) and The Dragon Trip (China & Japan), Fez Travel (Turkey) just to name a few.
+                        </h4>
+                        <p class="p">V Travel Network was founded 8 years ago by a group of avid travellers and our team has worked in nearly all aspects of Tourism and Hospitality in over 30 countries around the world Throughout their various roles and travels they
+                            realised that the most memorable experiences were the ones that got them off the standard tourist trail and allowed them to experience the destination at their own pace.</p>
+                    </div>
+                    <div>
+                        <p class="p">
+                            Throughout their various roles, they developed a strong connection with the various Independent Travel Networks around the Globe, which in turn has driven the desire to maximise awareness of this unique style of travel, that allows the benefits of Independent
+                            Travel to be enjoyed by all types of travellers. Whether they be heading out on their first overseas trip, or one of those more experienced travellers that just no longer have the time to travel at the pace they once did, but
+                            still want to see and do as much as possible along the way.
+                        </p>
+                        <p class="p">
+                            Over the last few years, V Travel Network has been fortunate to welcome a range of new members to our team, that also have extensive experience in all aspects of the Travel Industry (and quite a few others) and proudly excel in their commitment to customer
+                            service at all levels to ensure every traveller has the best experience possible.
+                        </p>
+                        <p class="p">
+                            V Travel Network is proudly an ATAS Accredited Travel Wholesaler (A10862) and a proud member of both ATTA, AFTA, IATA and CATO (TO1117)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Section -->
+        <section class="support-section">
+            <div class="container">
+                <div class="support-block">
+                    <div class="support-content">
+                        <h4 class="h4">We’re members</h4>
+                        <div class="support-images">
+                            <img src="images/member/cato.png" width="197" height="61" alt="member" />
+                            <img src="images/member/atas.png" width="148" height="58" alt="member" />
+                            <img src="images/member/safe.png" width="95" height="81" alt="member" />
+                        </div>
+                    </div>
+                    <div class="support-content">
+                        <h4 class="h4">We proudly support</h4>
+                        <div class="support-images">
+                            <img src="images/support/safe-vision.png" width="153" height="75" alt="member" />
+                            <img src="images/support/medecins.png" width="218" height="75" alt="member" />
+                            <img src="images/support/movember.png" width="190" height="75" alt="member" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section">
+            <div class="container">
+                <div class="team-block">
+                    <h4 class="h4">Your V Travel Team</h4>
+                    <ul class="team-list">
+                        <li class="team-unit">
+                            <div class="team-image">
+                                <img class="full-cover" width="247" height="247" src="images/team/user-1.jpg" alt="user" />
+                            </div>
+                            <p class="p"><b>Vanessa Wallace Kaplan</b></p>
+                            <p class="p">General Manager</p>
+                        </li>
+                        <li class="team-unit">
+                            <div class="team-image">
+                                <img class="full-cover" width="247" height="247" src="images/team/user-2.jpg" alt="user" />
+                            </div>
+                            <p class="p"><b>Vicki Kyriacou</b></p>
+                            <p class="p">Agent Relations AU</p>
+                        </li>
+                        <li class="team-unit">
+                            <div class="team-image">
+                                <img class="full-cover" width="247" height="247" src="images/team/user-3.jpg" alt="user" />
+                            </div>
+                            <p class="p"><b>Alisha Thomson</b></p>
+                            <p class="p">Agent Relations AU/NZ</p>
+                        </li>
+                        <li class="team-unit">
+                            <div class="team-image">
+                                <img class="full-cover" width="247" height="247" src="images/team/user-1.jpg" alt="user" />
+                            </div>
+                            <p class="p"><b>Vanessa Wallace Kaplan</b></p>
+                            <p class="p">General Manager</p>
+                        </li>
+                        <li class="team-unit">
+                            <div class="team-image">
+                                <img class="full-cover" width="247" height="247" src="images/team/user-2.jpg" alt="user" />
+                            </div>
+                            <p class="p"><b>Vicki Kyriacou</b></p>
+                            <p class="p">Agent Relations AU</p>
+                        </li>
+                        <li class="team-unit">
+                            <div class="team-image">
+                                <img class="full-cover" width="247" height="247" src="images/team/user-3.jpg" alt="user" />
+                            </div>
+                            <p class="p"><b>Alisha Thomson</b></p>
+                            <p class="p">Agent Relations AU/NZ</p>
+                        </li>
+                        <li class="team-unit">
+                            <div class="team-image">
+                                <img class="full-cover" width="247" height="247" src="images/team/user-1.jpg" alt="user" />
+                            </div>
+                            <p class="p"><b>Vanessa Wallace Kaplan</b></p>
+                            <p class="p">General Manager</p>
+                        </li>
+                        <li class="team-unit">
+                            <div class="team-image">
+                                <img class="full-cover" width="247" height="247" src="images/team/user-2.jpg" alt="user" />
+                            </div>
+                            <p class="p"><b>Vicki Kyriacou</b></p>
+                            <p class="p">Agent Relations AU</p>
+                        </li>
+                        <li class="team-unit">
+                            <div class="team-image">
+                                <img class="full-cover" width="247" height="247" src="images/team/user-3.jpg" alt="user" />
+                            </div>
+                            <p class="p"><b>Alisha Thomson</b></p>
+                            <p class="p">Agent Relations AU/NZ</p>
+                        </li>
+                        <li class="team-unit">
+                            <div class="team-image">
+                                <img class="full-cover" width="247" height="247" src="images/team/user-1.jpg" alt="user" />
+                            </div>
+                            <p class="p"><b>Vanessa Wallace Kaplan</b></p>
+                            <p class="p">General Manager</p>
+                        </li>
+                        <li class="team-unit">
+                            <div class="team-image">
+                                <img class="full-cover" width="247" height="247" src="images/team/user-2.jpg" alt="user" />
+                            </div>
+                            <p class="p"><b>Vicki Kyriacou</b></p>
+                            <p class="p">Agent Relations AU</p>
+                        </li>
+                        <li class="team-unit">
+                            <div class="team-image">
+                                <img class="full-cover" width="247" height="247" src="images/team/user-3.jpg" alt="user" />
+                            </div>
+                            <p class="p"><b>Alisha Thomson</b></p>
+                            <p class="p">Agent Relations AU/NZ</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- Marqee Section -->
+        <section class="marquee-section">
+            <div class="marquee">
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+            </div>
+        </section>
+
+        <!-- Subscribe Section -->
+        <section class="subscribe-section">
+            <div class="container">
+                <div class="subscribe-block">
+                    <h3>Discover new travel destinations + hear about our exclusive deals</h3>
+                    <form class="subscribe-form" action="">
+                        <div class="input-block">
+                            <label>Name</label>
+                            <input type="text" required />
+                        </div>
+                        <div class="input-block">
+                            <label>Email address</label>
+                            <input type="email" required />
+                        </div>
+                        <button class="btn btn-outline btn-md">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <section class="footer-section">
+            <div class="container">
+                <div class="footer-block">
+                    <a class="footer-brand" href="home.html">
+                        <img class="img-fluid" src="images/svg/logo-white.svg" alt="icon" />
+                    </a>
+                    <div class="footer-content">
+                        <div class="footer-unit">
+                            <h4>Company</h4>
+                            <ul>
+                                <li><a href="javascript:;">About us</a></li>
+                                <li><a href="javascript:;"> Our Partners</a></li>
+                                <li><a href="javascript:;"> Brochure Request</a></li>
+                                <li><a href="javascript:;">Send Quick Enquiry</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-unit">
+                            <h4>Tour operators</h4>
+                            <ul>
+                                <li><a href="javascript:;"> Fez Travel</a></li>
+                                <li><a href="javascript:;">Moose Travel Network</a></li>
+                                <li><a href="javascript:;">Bamba Experience</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-unit">
+                            <h4>Latest deals</h4>
+                            <ul>
+                                <li><a href="javascript:;">Tour marked in category</a></li>
+                                <li><a href="javascript:;"> Tour marked in category</a></li>
+                                <li><a href="javascript:;">Tour marked in category</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-unit">
+                            <h4>Sample</h4>
+                            <ul>
+                                <li><a href="javascript:;">Sample Link</a></li>
+                                <li><a href="javascript:;">Sample Link</a></li>
+                                <li><a href="javascript:;">Sample Link</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+
+    <!-- JQuery JS -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="bootstrap/bootstrap.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
