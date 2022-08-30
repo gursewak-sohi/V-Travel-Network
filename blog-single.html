@@ -1,0 +1,416 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog Single</title>
+    <link rel="shortcut icon" href="images/svg/favicon.svg" />
+    <!-- Booststrap CSS -->
+    <link rel="stylesheet" href="bootstrap/bootstrap.css">
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!-- Blog Single Page Style -->
+<style>
+    /* Header Section CSS */
+    
+    .blog-categories {
+        display: flex;
+    }
+    
+    .blog-categories li {
+        font-weight: 700;
+        font-size: max(0.875rem, 13px);
+        letter-spacing: 0.1em;
+        line-height: 17px;
+        color: var(--red-900);
+        text-transform: uppercase;
+        padding-left: 1.188rem;
+        white-space: nowrap;
+        position: relative;
+    }
+    
+    .blog-categories li:not(:last-child) {
+        margin-right: 1.313rem;
+    }
+    
+    .blog-categories li::before {
+        position: absolute;
+        left: 0;
+        top: 5px;
+        width: 8px;
+        height: 8px;
+        background-color: var(--red-900);
+        border: 1px solid var(--gray-500);
+        border-radius: 50%;
+        content: '';
+    }
+    
+    @media (max-width:991px) {
+        .blog-categories {
+            max-width: 80%;
+            justify-content: center;
+            margin: 0 auto;
+        }
+    }
+    /* Body Content Section */
+    
+    .blog-body-section {
+        padding: 3.125rem 0;
+    }
+    
+    .blog-body-block {
+        display: grid;
+        grid-template-columns: auto 387px;
+        column-gap: 45px;
+        align-items: flex-start;
+    }
+    
+    .blog-body-content h6 {
+        font-size: max(1.25rem, 16px);
+        line-height: max(1.563rem, 20px);
+        font-weight: 400;
+        margin-bottom: 1.563rem;
+        color: var(--gray-700);
+    }
+    
+    .blog-body-content p {
+        font-size: max(1rem, 14px);
+        line-height: max(1.563rem, 20px);
+        margin-bottom: 1.563rem;
+    }
+    
+    .share-blog {
+        background: linear-gradient(90deg, var(--red-700) 0%, var(--red-900) 100%);
+        display: flex;
+        flex-direction: column;
+        color: var(--white);
+        padding: 22px 22px 24px 32px;
+        border-radius: 20px;
+        position: sticky;
+        top: 130px;
+    }
+    
+    .share-blog h3 {
+        font-weight: 700;
+        font-size: max(1.375rem, 20px);
+        line-height: max(1.625rem, 23px);
+        margin-bottom: 0.625rem;
+    }
+    
+    .share-blog h4 {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 22px;
+        margin-bottom: 6px;
+    }
+    
+    .social-blog {
+        display: flex;
+        column-gap: 12px;
+        margin-bottom: 19px;
+    }
+    
+    .share-email-input {
+        height: 40px;
+        display: flex;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+    
+    .share-email-input input {
+        flex: 1;
+        background-color: var(--gray-300);
+        border: none;
+        border-radius: 0;
+        padding: 0 16px;
+        font-size: 10px;
+        height: 100%;
+    }
+    
+    .share-email-input .btn-send {
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0 50px 50px 0;
+        height: 100%;
+        padding-right: 14px;
+        background-color: #433633;
+    }
+    
+    .share-email-block h5 {
+        font-weight: 500;
+        font-size: max(0.938rem, 14px);
+        line-height: 18px;
+        margin-bottom: 7px;
+    }
+    
+    .share-email-block h6 {
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 12px;
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+    
+    @media (max-width:991px) {
+        .blog-body-block {
+            max-width: 80%;
+            grid-template-columns: 1fr;
+            margin: 0 auto;
+        }
+        .share-blog {
+            margin-top: 10px;
+        }
+    }
+    
+    @media (max-width:767px) {
+        .blog-body-block {
+            max-width: 100%;
+        }
+    }
+</style>
+
+<body class="inner-pages">
+    <!-- Header Sectioin -->
+    <header class="header">
+        <nav class="navbar navbar-expand-xl">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="home.html">
+                    <img class="img-fluid" src="images/svg/logo.svg" width="280" height="140" alt="icon" />
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#headerToggler" aria-controls="headerToggler" aria-expanded="false" aria-label="Toggle navigation">
+                  <svg fill="#1E3962" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="24px" height="24px"><path d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"/></svg>
+                </button>
+                <div class="collapse navbar-collapse" id="headerToggler">
+                    <div class="header-search">
+                        <label>Let’s travel to:</label>
+                        <div class="header-field">
+                            <input type="text" />
+                            <button type="button" class="btn btn-gradient btn-search">
+                                <img src="images/svg/search.svg" alt="icon"/>
+                            </button>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav">
+                        <li>
+                            <a href="javascript:;">Destinations</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Adventure Styles</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Blog</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Contact</a>
+                        </li>
+                    </ul>
+                    <a href="javascript:;" class="btn btn-gradient btn-md">Quick enquiry</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Heading Section  -->
+        <section class="heading-section">
+            <div class="heading-image">
+                <img class="full-cover" src="images/blog-single.jpg" width="1920" height="539" alt="banner">
+            </div>
+            <div class="heading-block">
+                <div class="container">
+                    <div class="heading-text">
+                        <h2 class="h2">What type of traveler are you?</h2>
+                        <ul class="blog-categories">
+                            <li>Travel advice</li>
+                            <li>Traveler</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Blog Body Section -->
+        <section class="blog-body-section">
+            <div class="container">
+                <div class="blog-body-block">
+                    <div class="blog-body-content">
+                        <h6>Travel.</h6>
+                        <p>You love it! You crave it. You dream of it! You don’t know what you’re having for lunch but you do know where your next 6 holidays will be! It’s why you’re reading this blog, we hope. You just can’t get enough. </p>
+                        <p>And neither can I. </p>
+                        <p>I’ve worked in the travel industry for over 7 years (on and off of course because I was travelling). Travel Agent, Tour Guide, Business Development for two travel companies, and now marketing and sales for V Travel Network. It’s
+                            a part of my life and a part of who I am.</p>
+                        <p>I recently broke up with my boyfriend (of 3 months) because he didn’t want to travel. Which is understandable. Not everyone has the urge to explore the world with a backpack and no clue or stay in 5 star hotel ordering hamburgers.
+                            Yes. These people exist and my ex-boyfriend is one of them. In his defence, he did give it a crack. We took a two week trip to Sydney and Melbourne which was in the end, our demise. We couldn’t travel together. Or I couldn’t
+                            travel with him because he DIDN’T WANT TO TRAVEL! Sorry, I’m still coming to terms with the fact that I dated someone who DOESN’T LIKE TRAVELING. Man, I need a holiday just thinking about it. </p>
+                        <p>But more importantly it got me thinking about what kind of traveler am I anyway? I mean, if the man I love can’t enjoy a simple trip with me, what or where am I going wrong? </p>
+                        <p>And listen, I’ve done my fair share of solo and group travel. I walked the entire 800km of the Camino De Santiago. I did a 21 Day (insert 18-39 Youth Company) that was CAMPING, when I was 23 I should add. I’ve sailed around the
+                            Maldives and ridden door-less trains in Sri Lanka. I’ve had my passport stolen on a train in Barcelona. I’ve dropped trou’ on the nudist beaches of the Casa Blanca Coast in Spain. I tackled the 1000 year old trails of the Kumodo
+                            Kodo in Japan, carrying 15kg and a tent on my back. All AMAZING trips that I’ll never forget. </p>
+                        <p>All of these experiences have one thing in common. I went by myself. </p>
+                        <p>Obviously some of these trips where categorized as “groups” or “tours” and there where people on those trips. But what I’m trying to say is I haven’t mentioned any of the trips where I went with a boyfriend or a friend. Because
+                            the thing I remember mostly about those trips aren’t positive experiences.</p>
+                        <p>When I travel I’m looking for a new experience, something different and unique, somewhere I can get lost. A choose your own adventure type of trip. And from my own experience, this doesn’t always translate to an enjoyable trip
+                            when you have someone tag along. </p>
+                        <p>Which leads me to believe that I might be traveling solo for the rest of my life… but it could be worse. I could just hate traveling. </p>
+                        <p>I’d love to hear about your experiences. Tell me what type of traveler you think you are.</p>
+                        <p>Here’s a list of a few you mate have run into already. </p>
+                        <p>Han Solo Yolo – millennial backpacker</p>
+                        <p>The Proclaimer – Hikers that would walk 500miles just to tell everyone about it</p>
+                        <p>Bali Bangers – only goes to Bali and calls all the taxi drivers Ketut</p>
+                        <p>Does it have a Kids Club? – annual family holiday and we mean the whole family, Mom, Dad, Uncle Ted, Grandma Shaz and your third cousin Damo, twice removed. </p>
+                        <p>The Cruiser – been on every boat, seen every buffet, slept in every inside cabin</p>
+                        <p>Danger is my middle name – has ridden the death road 8 times and done every bungee in the world</p>
+                    </div>
+                    <div class="share-blog">
+                        <h3>Did you enjoy this read?</h3>
+                        <h4>Follow us to keep up to date</h4>
+                        <ul class="social-blog">
+                            <li>
+                                <a href="javascript:;" target="_blank">
+                                    <img src="images/svg/twitter.svg" alt="icon" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" target="_blank">
+                                    <img src="images/svg/instagram.svg" alt="icon" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" target="_blank">
+                                    <img src="images/svg/facebook.svg" alt="icon" />
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="share-email-block">
+                            <h5>Email this article</h5>
+                            <div class="share-email-input">
+                                <input type="email" placeholder="Email address">
+                                <button class="btn btn-send">
+                                    <img src="images/svg/send.svg" alt="icon">
+                                </button>
+                            </div>
+                            <h6>No spam, just this article, we promise!</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- Marqee Section -->
+        <section class="marquee-section">
+            <div class="marquee">
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+            </div>
+        </section>
+
+        <!-- Subscribe Section -->
+        <section class="subscribe-section">
+            <div class="container">
+                <div class="subscribe-block">
+                    <h3>Discover new travel destinations + hear about our exclusive deals</h3>
+                    <form class="subscribe-form" action="">
+                        <div class="input-block">
+                            <label>Name</label>
+                            <input type="text" required />
+                        </div>
+                        <div class="input-block">
+                            <label>Email address</label>
+                            <input type="email" required />
+                        </div>
+                        <button class="btn btn-outline btn-md">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <section class="footer-section">
+            <div class="container">
+                <div class="footer-block">
+                    <a class="footer-brand" href="home.html">
+                        <img class="img-fluid" src="images/svg/logo-white.svg" alt="icon" />
+                    </a>
+                    <div class="footer-content">
+                        <div class="footer-unit">
+                            <h4>Company</h4>
+                            <ul>
+                                <li><a href="javascript:;">About us</a></li>
+                                <li><a href="javascript:;"> Our Partners</a></li>
+                                <li><a href="javascript:;"> Brochure Request</a></li>
+                                <li><a href="javascript:;">Send Quick Enquiry</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-unit">
+                            <h4>Tour operators</h4>
+                            <ul>
+                                <li><a href="javascript:;"> Fez Travel</a></li>
+                                <li><a href="javascript:;">Moose Travel Network</a></li>
+                                <li><a href="javascript:;">Bamba Experience</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-unit">
+                            <h4>Latest deals</h4>
+                            <ul>
+                                <li><a href="javascript:;">Tour marked in category</a></li>
+                                <li><a href="javascript:;"> Tour marked in category</a></li>
+                                <li><a href="javascript:;">Tour marked in category</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-unit">
+                            <h4>Sample</h4>
+                            <ul>
+                                <li><a href="javascript:;">Sample Link</a></li>
+                                <li><a href="javascript:;">Sample Link</a></li>
+                                <li><a href="javascript:;">Sample Link</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+
+    <!-- JQuery JS -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="bootstrap/bootstrap.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

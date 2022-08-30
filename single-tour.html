@@ -1,0 +1,962 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Single Tour</title>
+    <link rel="shortcut icon" href="images/svg/favicon.svg" />
+    <!-- Booststrap CSS -->
+    <link rel="stylesheet" href="bootstrap/bootstrap.css">
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!-- Single Tour Style -->
+<style>
+    /* Check Availiblity Modal */
+    
+    .modal-backdrop {
+        background-color: var(--white);
+    }
+    
+    .modal-backdrop.show {
+        opacity: 0.7;
+    }
+    
+    .availability-modal {
+        max-width: 676px;
+    }
+    
+    .availability-modal .modal-content {
+        border-radius: 20px;
+        border: none;
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+    }
+    
+    .availabity-block {
+        padding: 55px 55px 81px;
+        position: relative;
+    }
+    
+    .availabity-block::after {
+        content: '';
+        background-image: url(images/svg/modal-cut.svg);
+        width: 110%;
+        height: 49px;
+        background-size: cover;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .availabity-block>.h3 {
+        margin-bottom: 26px;
+    }
+    
+    .availabity-content .h4 {
+        margin-bottom: 1.25rem;
+        font-weight: 500;
+    }
+    
+    .availabity-content ul {
+        display: grid;
+        grid-template-columns: repeat(3, 196px);
+        row-gap: 14px;
+    }
+    
+    .availabity-content ul h4 {
+        font-weight: 700;
+        color: var(--red-900);
+        font-size: 14px;
+        line-height: 25px;
+    }
+    
+    .availabity-content ul h5 {
+        font-size: 14px;
+        line-height: 25px;
+        font-weight: 400;
+    }
+    
+    .availabity-content ul h5 a {
+        color: var(--gray-700);
+        text-decoration: underline;
+    }
+    
+    .availibity-form {
+        background-color: var(--gray-200);
+        padding: 45px 55px 37px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 60px;
+    }
+    
+    .form-unit {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 26px;
+    }
+    
+    .form-unit>label {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        color: var(--gray-900);
+        margin-bottom: 10px;
+    }
+    
+    .form-unit>input {
+        font-weight: 500;
+        font-size: 14px;
+        border-radius: 40px;
+        color: var(--gray-900);
+        border: 1px solid #E6E6E6;
+        padding: 6px 14px;
+    }
+    
+    .form-unit>textarea {
+        font-weight: 500;
+        font-size: 14px;
+        border-radius: 15px;
+        color: var(--gray-900);
+        border: 1px solid #E6E6E6;
+        padding: 6px 14px;
+        height: 73px;
+        resize: none;
+    }
+    
+    .checkbox-group {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .checkbox-unit {
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+    
+    .checkbox-unit>input {
+        display: none;
+    }
+    
+    .checkbox-unit label {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-size: 10px;
+        line-height: 12px;
+        max-width: 184px;
+    }
+    
+    .checkbox-unit label span {
+        width: 25px;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--white);
+        border-radius: 50%;
+        border: 1px solid #E6E6E6;
+        margin-right: 6px;
+        flex-shrink: 0;
+        position: relative;
+    }
+    
+    .checkbox-unit label span::after {
+        content: '';
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+        border-radius: 50%;
+        background-color: var(--red-900);
+        transition: 0.3s all ease;
+    }
+    
+    .checkbox-unit input:checked+label span::after {
+        opacity: 100%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    
+    @media (max-width:767px) {
+        .availabity-block {
+            padding: 25px 25px 81px;
+        }
+        .availabity-content ul {
+            grid-template-columns: 1fr;
+        }
+        .availibity-form {
+            padding: 25px 25px 25px;
+            grid-template-columns: 1fr;
+        }
+        .checkbox-unit label {
+            max-width: 100%;
+        }
+    }
+    /* Tour Highlights CSS */
+    
+    .highlights-section {
+        position: sticky;
+        top: 35.875rem;
+        height: 0;
+        z-index: 10;
+    }
+    
+    .highlights-block {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .tour-highlights {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 24.188rem;
+        border-radius: 20px;
+        background: rgb(166, 38, 57);
+        background: linear-gradient(90deg, var(--red-700) 0%, var(--red-900) 100%);
+        color: var(--white);
+        padding: 1.25rem 1.875rem 3.125rem;
+        margin-top: -27.375rem;
+        margin-bottom: 1.875rem;
+    }
+    
+    .tour-highlights h4 {
+        font-weight: 700;
+        font-size: max(1.625rem, 22px);
+        line-height: max(2.438rem, 26px);
+        align-self: flex-start;
+        margin-bottom: 12px;
+    }
+    
+    .tour-highlights ul li {
+        display: flex;
+        width: 100%;
+        padding-left: 2.375rem;
+        font-weight: 500;
+        font-size: max(0.938rem, 14px);
+        line-height: max(1.375rem, 20px);
+        margin-bottom: 1.75rem;
+        background-image: url(images/svg/checked.svg);
+        background-position: 0;
+        background-repeat: no-repeat;
+        min-height: 1.563rem;
+        background-size: 1.563rem 1.563rem;
+    }
+    
+    .tour-highlights ul {
+        align-self: flex-start;
+    }
+    
+    .tour-highlights h6 {
+        font-weight: bold;
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        line-height: 17px;
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 2px;
+    }
+    
+    .tour-highlights h5 {
+        font-weight: bold;
+        font-size: max(1.5rem, 20px);
+        line-height: max(1.75rem, 24px);
+        text-align: center;
+        margin-bottom: 1.375rem;
+    }
+    
+    @media (max-width:1899px) {
+        .tour-highlights {
+            margin-top: -29.175rem;
+        }
+        .highlights-section {
+            top: 37.875rem;
+        }
+    }
+    
+    @media (max-width:1499px) {
+        .tour-highlights {
+            margin-top: -32.175rem;
+        }
+        .highlights-section {
+            top: 40.375rem;
+        }
+    }
+    
+    @media (max-width:1199px) {
+        .tour-highlights {
+            margin-top: -34.975rem;
+        }
+        .highlights-section {
+            top: 43.975rem;
+        }
+    }
+    
+    @media (max-width:991px) {
+        .highlights-block {
+            max-width: 80%;
+            margin: 0 auto;
+        }
+        .highlights-section {
+            height: auto;
+        }
+        .tour-highlights {
+            padding-top: 2.25rem;
+            margin-top: 0;
+            margin-bottom: 0;
+            max-width: 100%;
+        }
+        .highlights-section {
+            position: static;
+            top: 0;
+            padding-top: 40px;
+        }
+        .tour-highlights h4 {
+            align-self: center;
+        }
+    }
+    
+    @media (max-width:767px) {
+        .highlights-section {
+            padding-top: 30px;
+        }
+        .highlights-block {
+            max-width: 100%;
+        }
+    }
+    /* Tour Information CSS */
+    
+    .tour-info-section {
+        padding: 4.813rem 0 3.125rem;
+        position: relative;
+    }
+    
+    .print-block {
+        position: absolute;
+        right: 13px;
+        top: 6px;
+    }
+    
+    .tour-info-block .h4 {
+        margin-bottom: 1.25rem;
+    }
+    
+    .tour-info-list {
+        display: grid;
+        grid-template-columns: repeat(3, 196px);
+        margin-bottom: 32px;
+        row-gap: 14px;
+    }
+    
+    .tour-info-list h4 {
+        font-weight: 700;
+        color: var(--red-900);
+        font-size: 14px;
+        line-height: 25px;
+    }
+    
+    .tour-info-list h5 {
+        font-size: 14px;
+        line-height: 25px;
+        font-weight: 400;
+    }
+    
+    .tour-info-list h5 a {
+        color: var(--gray-700);
+        text-decoration: underline;
+    }
+    
+    @media (max-width:991px) {
+        .tour-info-block {
+            max-width: 80%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .tour-info-block .h4 {
+            text-align: center;
+        }
+        .tour-info-list {
+            grid-template-columns: repeat(3, 1fr);
+            text-align: center;
+            width: 100%;
+        }
+        .print-block {
+            display: none;
+        }
+    }
+    
+    @media (max-width:767px) {
+        .tour-info-block {
+            max-width: 100%;
+        }
+        .tour-info-list {
+            grid-template-columns: 1fr;
+        }
+    }
+    /* Ttinerary Section CSS */
+    
+    .itinerary-section {
+        padding: 0 0 3.438rem;
+    }
+    
+    .itinerary-block {
+        max-width: 75.625rem;
+    }
+    
+    .itinerary-block h4 {
+        margin-bottom: 4px;
+    }
+    
+    .accordion-unit:not(:first-child) {
+        border-top: 1px solid var(--gray-300);
+    }
+    
+    .accordion-toggler {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem 0.313rem 1.5rem 2.5rem;
+        position: relative;
+        cursor: pointer;
+    }
+    
+    .accordion-toggler::before {
+        width: max(0.625rem, 8px);
+        height: max(0.625rem, 8px);
+        border-radius: 50%;
+        border: 0.125rem solid var(--red-700);
+        background-color: var(--red-700);
+        position: absolute;
+        left: 0.625rem;
+        top: 50%;
+        transform: translateY(-50%);
+        content: '';
+        transition: 0.3s all ease;
+    }
+    
+    .accordion-toggler.collapsed::before {
+        border: 0.125rem solid var(--gray-500);
+        background-color: var(--white);
+    }
+    
+    .accordion-toggler h3 {
+        font-weight: 500;
+        font-size: max(1.125rem, 16px);
+        line-height: max(1.375rem, 20px);
+    }
+    
+    .accordion-toggler svg {
+        transform: rotate(-180deg);
+        transition: 0.3s all ease;
+        flex-shrink: 0;
+        margin-left: 10px;
+    }
+    
+    .accordion-toggler.collapsed svg {
+        transform: rotate(0deg);
+    }
+    
+    .accordion-toggler svg path {
+        fill: var(--red-700);
+        transition: 0.3s all ease;
+    }
+    
+    .accordion-toggler.collapsed svg path {
+        fill: var(--gray-700);
+    }
+    
+    .accordion-content {
+        padding: 0 1.875rem 1.625rem 2.5rem;
+    }
+    
+    .accordion-content p {
+        margin-bottom: 1.25rem;
+    }
+    
+    .itinerary-images {
+        display: grid;
+        margin-top: 2.563rem;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 1.875rem;
+    }
+    
+    @media (max-width: 1499px) {
+        .itinerary-block {
+            max-width: 63.625rem;
+        }
+    }
+    
+    @media (max-width: 1199px) {
+        .itinerary-block {
+            max-width: 57.625rem;
+        }
+    }
+    
+    @media (max-width: 991px) {
+        .itinerary-block h4 {
+            text-align: center;
+        }
+        .itinerary-block {
+            max-width: 80%;
+            margin: 0 auto;
+        }
+    }
+    
+    @media (max-width: 767px) {
+        .itinerary-block {
+            max-width: 100%;
+        }
+        .itinerary-images {
+            grid-template-columns: 1fr;
+            row-gap: 1.875rem;
+        }
+    }
+</style>
+
+<body class="inner-pages">
+
+    <!-- Check Availability Modal -->
+    <div class="modal fade" id="checkAvailabilityModal" tabindex="-1" aria-labelledby="checkAvailabilityModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered availability-modal">
+            <div class="modal-content">
+                <div class="availabity-block">
+                    <h3 class="h3">Red Centre Desert Dreaming</h3>
+                    <div class="availabity-content">
+                        <h4 class="h4">Tour Information</h4>
+                        <ul>
+                            <li>
+                                <h4>Tour Operator:</h4>
+                                <h5>Sample name</h5>
+                            </li>
+                            <li>
+                                <h4>Max group size:</h4>
+                                <h5>12</h5>
+                            </li>
+                            <li>
+                                <h4>Destination</h4>
+                                <h5><a href="javascript:;">Australia</a></h5>
+                            </li>
+                            <li>
+                                <h4>Age range:</h4>
+                                <h5>Sample name</h5>
+                            </li>
+                            <li>
+                                <h4>Tour id:</h4>
+                                <h5>123ABC</h5>
+                            </li>
+                            <li>
+                                <h4>Adventure Style:</h4>
+                                <h5>
+                                    <a href="javascript:;">Outback</a>,
+                                    <a href="javascript:;">Hiking</a>,
+                                    <a href="javascript:;">4WD</a>
+                                </h5>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <form class="availibity-form">
+                    <div class="form-unit">
+                        <label>Name</label>
+                        <input type="text" />
+                    </div>
+                    <div class="form-unit">
+                        <label>Email address</label>
+                        <input type="email" />
+                    </div>
+                    <div class="form-unit">
+                        <label>Number of passengers</label>
+                        <input type="text" />
+                    </div>
+                    <div class="form-unit">
+                        <label>Preferred departure date</label>
+                        <input type="date" />
+                    </div>
+                    <div class="form-unit">
+                        <label>Additional information</label>
+                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="form-unit">
+                        <label>Brochure</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-unit">
+                                <input type="checkbox" id="copyEmail">
+                                <label for="copyEmail"><span></span> Email a copy to the email address provided</label>
+                            </div>
+                            <div class="checkbox-unit">
+                                <input type="checkbox" id="latestOffers">
+                                <label for="latestOffers"><span></span>Receive our latest offers and deals straight to your inbox, no spam - we promise!</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-button">
+                        <button type="submit" class="btn btn-gradient btn-md">Check availability</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Sectioin -->
+    <header class="header">
+        <nav class="navbar navbar-expand-xl">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="home.html">
+                    <img class="img-fluid" src="images/svg/logo.svg" width="280" height="140" alt="icon" />
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#headerToggler" aria-controls="headerToggler" aria-expanded="false" aria-label="Toggle navigation">
+                  <svg fill="#1E3962" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="24px" height="24px"><path d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"/></svg>
+                </button>
+                <div class="collapse navbar-collapse" id="headerToggler">
+                    <div class="header-search">
+                        <label>Let’s travel to:</label>
+                        <div class="header-field">
+                            <input type="text" />
+                            <button type="button" class="btn btn-gradient btn-search">
+                                <img src="images/svg/search.svg" alt="icon"/>
+                            </button>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav">
+                        <li>
+                            <a href="javascript:;">Destinations</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Adventure Styles</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Blog</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Contact</a>
+                        </li>
+                    </ul>
+                    <a href="javascript:;" class="btn btn-gradient btn-md">Quick enquiry</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Heading Section  -->
+        <section class="heading-section">
+            <div class="heading-image">
+                <img class="full-cover" src="images/single-tour-bg.jpg" width="1920" height="539" alt="banner">
+            </div>
+            <div class="heading-block">
+                <div class="container">
+                    <div class="heading-text heading-text-lg">
+                        <h2 class="h2">Red Centre Desert Dreaming</h2>
+                        <p class="p">Travel with a small group of 18 in a 4 Wheel Drive vehicle and experience remote private campsites with traditional swag camping or our Comfortable Safari tents complete with beds.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Highlights Section -->
+        <section class="highlights-section">
+            <div class="container">
+                <div class="highlights-block">
+                    <div class="tour-highlights">
+                        <h4>Tour Highlights</h4>
+                        <ul>
+                            <li>Incredible 6 day tour - the ultimate Outback Experience!</li>
+                            <li>Visit the icons of Uluru, Kata Tjuta, Kings Canyon and West MacDonnell Ranges</li>
+                            <li>Witness Sunset and Sunrise at Uluru</li>
+                        </ul>
+                        <h6>Price from</h6>
+                        <h5>$1925 AUD</h5>
+                        <a data-bs-toggle="modal" data-bs-target="#checkAvailabilityModal" class="btn btn-white btn-lg" href="javascript:;">Check availability</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tour Information -->
+        <section class="tour-info-section">
+            <div class="container">
+                <div class="tour-info-block">
+                    <h4 class="h4">Tour Information</h4>
+                    <ul class="tour-info-list">
+                        <li>
+                            <h4>Tour Operator:</h4>
+                            <h5>Sample name</h5>
+                        </li>
+                        <li>
+                            <h4>Max group size:</h4>
+                            <h5>12</h5>
+                        </li>
+                        <li>
+                            <h4>Destination</h4>
+                            <h5><a href="javascript:;">Australia</a></h5>
+                        </li>
+                        <li>
+                            <h4>Age range:</h4>
+                            <h5>Sample name</h5>
+                        </li>
+                        <li>
+                            <h4>Tour id:</h4>
+                            <h5>123ABC</h5>
+                        </li>
+                        <li>
+                            <h4>Adventure Style:</h4>
+                            <h5>
+                                <a href="javascript:;">Outback</a>,
+                                <a href="javascript:;">Hiking</a>,
+                                <a href="javascript:;">4WD</a>
+                            </h5>
+                        </li>
+                    </ul>
+                    <a href="javascript:;" class="btn btn-gradient btn-xs">Download brochure</a>
+                </div>
+            </div>
+            <div class="print-block">
+                <button type="button" class="btn btn-gradient btn-print"><img src="images/svg/printing.svg" alt="icon"/> Print customer copy</button>
+            </div>
+        </section>
+
+        <!-- Itinerary Section -->
+        <section class="itinerary-section">
+            <div class="container">
+                <div class="itinerary-block">
+                    <h4 class="h4">Itinerary</h4>
+                    <div id="accordionPosts">
+                        <div class="accordion-unit">
+                            <div class="accordion-toggler" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <h3>Day 1 - Uluru</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="11.696" height="7" viewBox="0 0 11.696 7">
+                                    <path id="Path_275" data-name="Path 275" d="M14.239,14.9a1.141,1.141,0,0,0-1.61,0L8.737,18.785,4.847,14.9a1.139,1.139,0,1,0-1.61,1.61l4.695,4.7a1.141,1.141,0,0,0,1.61,0l4.7-4.695a1.141,1.141,0,0,0,0-1.612Z" transform="translate(-2.876 -14.536)"/>
+                                </svg>
+                            </div>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionPosts">
+                                <div class="accordion-content">
+                                    <p class="p">Enjoy a relaxed breakfast before we leave Kings Creek Station and begin making our way back to Uluru. We stop en route at Kathleen Springs to enjoy a leisurely 1.5 hour walk which take us to a picturesque spring- fed
+                                        waterhole at the head of Kathleen Gorge, this is an ideal spot to sit and enjoy the tranquillity before we hit the road again.</p>
+                                    <p class="p">Arriving at Uluru for our final night in the outback, you’ll have the chance to visit the camel farm (optional and own expense) to experience one of the oldest forms of transport in the desert before settling in for
+                                        our last dinner together around the campfire. This evening you can also visit Bruce Munro’s art installation ‘Field of Light’ (optional and own expense) or opt to stay back at camp and marvel at the clearest skies
+                                        you can imagine.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-unit">
+                            <div class="accordion-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                <h3>Day 2 - Uluru to Kings Creek Station</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="11.696" height="7" viewBox="0 0 11.696 7">
+                                    <path id="Path_275" data-name="Path 275" d="M14.239,14.9a1.141,1.141,0,0,0-1.61,0L8.737,18.785,4.847,14.9a1.139,1.139,0,1,0-1.61,1.61l4.695,4.7a1.141,1.141,0,0,0,1.61,0l4.7-4.695a1.141,1.141,0,0,0,0-1.612Z" transform="translate(-2.876 -14.536)"/>
+                                </svg>
+                            </div>
+                            <div id="collapseTwo" class="accordion-collapse collapse " data-bs-parent="#accordionPosts ">
+                                <div class="accordion-content">
+                                    <p class="p">Enjoy a relaxed breakfast before we leave Kings Creek Station and begin making our way back to Uluru. We stop en route at Kathleen Springs to enjoy a leisurely 1.5 hour walk which take us to a picturesque spring- fed
+                                        waterhole at the head of Kathleen Gorge, this is an ideal spot to sit and enjoy the tranquillity before we hit the road again.</p>
+                                    <p class="p">Arriving at Uluru for our final night in the outback, you’ll have the chance to visit the camel farm (optional and own expense) to experience one of the oldest forms of transport in the desert before settling in for
+                                        our last dinner together around the campfire. This evening you can also visit Bruce Munro’s art installation ‘Field of Light’ (optional and own expense) or opt to stay back at camp and marvel at the clearest skies
+                                        you can imagine.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-unit">
+                            <div class="accordion-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                <h3>Day 3 - Watarrka (Kings Canyon)</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="11.696" height="7" viewBox="0 0 11.696 7">
+                                    <path id="Path_275" data-name="Path 275" d="M14.239,14.9a1.141,1.141,0,0,0-1.61,0L8.737,18.785,4.847,14.9a1.139,1.139,0,1,0-1.61,1.61l4.695,4.7a1.141,1.141,0,0,0,1.61,0l4.7-4.695a1.141,1.141,0,0,0,0-1.612Z" transform="translate(-2.876 -14.536)"/>
+                                </svg>
+                            </div>
+                            <div id="collapseThree" class="accordion-collapse collapse " data-bs-parent="#accordionPosts ">
+                                <div class="accordion-content">
+                                    <p class="p">Enjoy a relaxed breakfast before we leave Kings Creek Station and begin making our way back to Uluru. We stop en route at Kathleen Springs to enjoy a leisurely 1.5 hour walk which take us to a picturesque spring- fed
+                                        waterhole at the head of Kathleen Gorge, this is an ideal spot to sit and enjoy the tranquillity before we hit the road again.</p>
+                                    <p class="p">Arriving at Uluru for our final night in the outback, you’ll have the chance to visit the camel farm (optional and own expense) to experience one of the oldest forms of transport in the desert before settling in for
+                                        our last dinner together around the campfire. This evening you can also visit Bruce Munro’s art installation ‘Field of Light’ (optional and own expense) or opt to stay back at camp and marvel at the clearest skies
+                                        you can imagine.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-unit">
+                            <div class="accordion-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                <h3>Day 4 - West MacDonnell ranges to Kings Creek Station
+                                </h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="11.696" height="7" viewBox="0 0 11.696 7">
+                                    <path id="Path_275" data-name="Path 275" d="M14.239,14.9a1.141,1.141,0,0,0-1.61,0L8.737,18.785,4.847,14.9a1.139,1.139,0,1,0-1.61,1.61l4.695,4.7a1.141,1.141,0,0,0,1.61,0l4.7-4.695a1.141,1.141,0,0,0,0-1.612Z" transform="translate(-2.876 -14.536)"/>
+                                </svg>
+                            </div>
+                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionPosts">
+                                <div class="accordion-content">
+                                    <p class="p">Enjoy a relaxed breakfast before we leave Kings Creek Station and begin making our way back to Uluru. We stop en route at Kathleen Springs to enjoy a leisurely 1.5 hour walk which take us to a picturesque spring- fed
+                                        waterhole at the head of Kathleen Gorge, this is an ideal spot to sit and enjoy the tranquillity before we hit the road again.</p>
+                                    <p class="p">Arriving at Uluru for our final night in the outback, you’ll have the chance to visit the camel farm (optional and own expense) to experience one of the oldest forms of transport in the desert before settling in for
+                                        our last dinner together around the campfire. This evening you can also visit Bruce Munro’s art installation ‘Field of Light’ (optional and own expense) or opt to stay back at camp and marvel at the clearest skies
+                                        you can imagine.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-unit">
+                            <div class="accordion-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                <h3>Day 5 - Return to Uluru
+                                </h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="11.696" height="7" viewBox="0 0 11.696 7">
+                                    <path id="Path_275" data-name="Path 275" d="M14.239,14.9a1.141,1.141,0,0,0-1.61,0L8.737,18.785,4.847,14.9a1.139,1.139,0,1,0-1.61,1.61l4.695,4.7a1.141,1.141,0,0,0,1.61,0l4.7-4.695a1.141,1.141,0,0,0,0-1.612Z" transform="translate(-2.876 -14.536)"/>
+                                </svg>
+                            </div>
+                            <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionPosts">
+                                <div class="accordion-content">
+                                    <p class="p">Enjoy a relaxed breakfast before we leave Kings Creek Station and begin making our way back to Uluru. We stop en route at Kathleen Springs to enjoy a leisurely 1.5 hour walk which take us to a picturesque spring- fed
+                                        waterhole at the head of Kathleen Gorge, this is an ideal spot to sit and enjoy the tranquillity before we hit the road again.</p>
+                                    <p class="p">Arriving at Uluru for our final night in the outback, you’ll have the chance to visit the camel farm (optional and own expense) to experience one of the oldest forms of transport in the desert before settling in for
+                                        our last dinner together around the campfire. This evening you can also visit Bruce Munro’s art installation ‘Field of Light’ (optional and own expense) or opt to stay back at camp and marvel at the clearest skies
+                                        you can imagine.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-unit">
+                            <div class="accordion-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                                <h3>Day 6 - Finish
+                                </h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="11.696" height="7" viewBox="0 0 11.696 7">
+                                    <path id="Path_275" data-name="Path 275" d="M14.239,14.9a1.141,1.141,0,0,0-1.61,0L8.737,18.785,4.847,14.9a1.139,1.139,0,1,0-1.61,1.61l4.695,4.7a1.141,1.141,0,0,0,1.61,0l4.7-4.695a1.141,1.141,0,0,0,0-1.612Z" transform="translate(-2.876 -14.536)"/>
+                                </svg>
+                            </div>
+                            <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionPosts">
+                                <div class="accordion-content">
+                                    <p class="p">Enjoy a relaxed breakfast before we leave Kings Creek Station and begin making our way back to Uluru. We stop en route at Kathleen Springs to enjoy a leisurely 1.5 hour walk which take us to a picturesque spring- fed
+                                        waterhole at the head of Kathleen Gorge, this is an ideal spot to sit and enjoy the tranquillity before we hit the road again.</p>
+                                    <p class="p">Arriving at Uluru for our final night in the outback, you’ll have the chance to visit the camel farm (optional and own expense) to experience one of the oldest forms of transport in the desert before settling in for
+                                        our last dinner together around the campfire. This evening you can also visit Bruce Munro’s art installation ‘Field of Light’ (optional and own expense) or opt to stay back at camp and marvel at the clearest skies
+                                        you can imagine.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="itinerary-images">
+                        <img class="img-fluid" src="images/itinerary.jpg" width="392" height="211" alt="icon" />
+                        <img class="img-fluid" src="images/itinerary.jpg" width="392" height="211" alt="icon" />
+                        <img class="img-fluid" src="images/itinerary.jpg" width="392" height="211" alt="icon" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- Marqee Section -->
+        <section class="marquee-section ">
+            <div class="marquee ">
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+            </div>
+        </section>
+
+        <!-- Subscribe Section -->
+        <section class="subscribe-section ">
+            <div class="container ">
+                <div class="subscribe-block ">
+                    <h3>Discover new travel destinations + hear about our exclusive deals</h3>
+                    <form class="subscribe-form " action=" ">
+                        <div class="input-block ">
+                            <label>Name</label>
+                            <input type="text " required />
+                        </div>
+                        <div class="input-block ">
+                            <label>Email address</label>
+                            <input type="email " required />
+                        </div>
+                        <button class="btn btn-outline btn-md ">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <section class="footer-section ">
+            <div class="container ">
+                <div class="footer-block ">
+                    <a class="footer-brand " href="home.html ">
+                        <img class="img-fluid " src="images/svg/logo-white.svg " alt="icon " />
+                    </a>
+                    <div class="footer-content ">
+                        <div class="footer-unit ">
+                            <h4>Company</h4>
+                            <ul>
+                                <li><a href="javascript:; ">About us</a></li>
+                                <li><a href="javascript:; "> Our Partners</a></li>
+                                <li><a href="javascript:; "> Brochure Request</a></li>
+                                <li><a href="javascript:; ">Send Quick Enquiry</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-unit ">
+                            <h4>Tour operators</h4>
+                            <ul>
+                                <li><a href="javascript:; "> Fez Travel</a></li>
+                                <li><a href="javascript:; ">Moose Travel Network</a></li>
+                                <li><a href="javascript:; ">Bamba Experience</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-unit ">
+                            <h4>Latest deals</h4>
+                            <ul>
+                                <li><a href="javascript:; ">Tour marked in category</a></li>
+                                <li><a href="javascript:; "> Tour marked in category</a></li>
+                                <li><a href="javascript:; ">Tour marked in category</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-unit ">
+                            <h4>Sample</h4>
+                            <ul>
+                                <li><a href="javascript:; ">Sample Link</a></li>
+                                <li><a href="javascript:; ">Sample Link</a></li>
+                                <li><a href="javascript:; ">Sample Link</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+
+    <!-- JQuery JS -->
+    <script src="js/jquery-3.2.1.min.js "></script>
+    <!-- Bootstrap JS -->
+    <script src="bootstrap/bootstrap.js "></script>
+    <!-- Custom JS -->
+    <script src="js/main.js "></script>
+
+</body>
+
+</html>

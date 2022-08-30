@@ -1,0 +1,670 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tours</title>
+    <link rel="shortcut icon" href="images/svg/favicon.svg" />
+    <!-- Booststrap CSS -->
+    <link rel="stylesheet" href="bootstrap/bootstrap.css">
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!-- Tours Page Style -->
+<style>
+    /* Tour Heading Section CSS */
+    
+    .tour-heading-section {
+        overflow: hidden;
+        padding-top: 13.75rem;
+        background: linear-gradient(90deg, var(--red-700) 0%, var(--red-900) 100%);
+    }
+    
+    .tour-heading-block {
+        position: relative;
+        background-color: var(--gray-200);
+        padding: 2.125rem 0 3.125rem;
+    }
+    
+    .tour-heading-block::after {
+        position: absolute;
+        width: 121.2rem;
+        height: 8.688rem;
+        content: '';
+        left: 50%;
+        top: -8.688rem;
+        background-image: url(../images/svg/tour-cut.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        transform: translateX(-50%);
+    }
+    
+    .tour-filters {
+        margin-top: 0.75rem;
+        display: flex;
+        column-gap: 45px;
+    }
+    
+    .filter-block {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .filter-block h4 {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 25px;
+        color: var(--red-900);
+        margin-bottom: 5px;
+    }
+    
+    .filter-list {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .filter-unit input {
+        display: none;
+    }
+    
+    .filter-unit label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 12px;
+        line-height: 14px;
+        margin-bottom: 5px;
+    }
+    
+    .filter-unit label span {
+        width: 13px;
+        height: 13px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--white);
+        border-radius: 50%;
+        border: 1px solid var(--gray-500);
+        margin-right: 6px;
+        position: relative;
+    }
+    
+    .filter-unit label span::after {
+        content: '';
+        width: 8px;
+        height: 8px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+        border-radius: 50%;
+        background-color: var(--red-900);
+        transition: 0.3s all ease;
+    }
+    
+    .filter-unit input:checked+label span::after {
+        opacity: 100%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    
+    .keyword input {
+        flex: 1;
+        background-color: var(--gray-300);
+        border: none;
+        border-radius: 0;
+        padding: 0 16px;
+        font-size: 14px;
+        height: 40px;
+        width: 218px;
+        border-radius: 40px;
+    }
+    
+    @media (max-width: 991px) {
+        .tour-heading-text {
+            max-width: 80%;
+            margin: 0 auto;
+        }
+        .tour-heading-text h2 {
+            text-align: center;
+        }
+        .tour-filters {
+            column-gap: 45px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            row-gap: 20px;
+        }
+    }
+    
+    @media (max-width: 767px) {
+        .tour-heading-section {
+            padding-top: 120px;
+        }
+        .tour-heading-block {
+            padding-top: 0;
+        }
+        .tour-heading-text {
+            max-width: 100%;
+        }
+        .tour-heading-text h2 {
+            text-align: center;
+        }
+        .tour-filters {
+            column-gap: 0px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .filter-block:last-child {
+            grid-column: 1 / -1;
+        }
+        .keyword input {
+            width: 100%;
+        }
+    }
+    /* Tour Section CSS */
+    
+    .tour-section {
+        padding: 3.75rem 0 5rem;
+    }
+    
+    .tour-results {
+        margin-top: 1.625rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 1.875rem;
+        row-gap: 2.313rem;
+    }
+    
+    .tour-unit {
+        display: flex;
+        align-items: center;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .tour-image {
+        width: 48%;
+        height: 100%;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+    
+    .tour-content {
+        flex: 1;
+        padding: 1.563rem 1.875rem 1.875rem 1.875rem;
+        background-color: var(--gray-400);
+    }
+    
+    .tour-content>h5 {
+        font-weight: 500;
+        font-size: max(1.125rem, 16px);
+        line-height: max(1.5rem, 20px);
+        margin-bottom: 1.25rem;
+    }
+    
+    .tour-details {
+        display: flex;
+        column-gap: 2.75rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    .tour-details ul {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .tour-details ul li {
+        margin-bottom: 13px;
+        line-height: 25px;
+        font-size: 14px;
+    }
+    
+    .tour-details ul li h6 {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--red-900);
+        margin: 0;
+    }
+    
+    .tour-details ul li p {
+        text-decoration: underline;
+    }
+    
+    .tour-price p {
+        letter-spacing: 0.1em;
+        line-height: 16px;
+        text-transform: uppercase;
+        margin-bottom: 2px;
+        font-size: 12px;
+    }
+    
+    .tour-price h4 {
+        font-size: max(1.5rem, 20px);
+        line-height: max(2.188rem, 28px);
+        font-weight: bold;
+        color: var(--gray-900);
+    }
+    
+    @media (max-width:1499px) {
+        .tour-image {
+            width: 40%;
+        }
+    }
+    
+    @media (max-width: 991px) {
+        .tour-block {
+            max-width: 80%;
+            margin: 0 auto;
+        }
+        .tour-results {
+            grid-template-columns: 1fr;
+        }
+        .tour-image {
+            width: 45%;
+        }
+        .tour-block h3 {
+            text-align: center;
+        }
+    }
+    
+    @media (max-width: 767px) {
+        .tour-block {
+            max-width: 100%;
+        }
+        .tour-unit {
+            flex-direction: column;
+        }
+        .tour-image {
+            width: 100%;
+            height: 180px;
+        }
+        .tour-content {
+            width: 100%;
+        }
+    }
+</style>
+
+<body class="inner-pages">
+    <!-- Header Sectioin -->
+    <header class="header">
+        <nav class="navbar navbar-expand-xl">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="home.html">
+                    <img class="img-fluid" src="images/svg/logo.svg" width="280" height="140" alt="icon" />
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#headerToggler" aria-controls="headerToggler" aria-expanded="false" aria-label="Toggle navigation">
+                  <svg fill="#1E3962" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="24px" height="24px"><path d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"/></svg>
+                </button>
+                <div class="collapse navbar-collapse" id="headerToggler">
+                    <div class="header-search">
+                        <label>Let’s travel to:</label>
+                        <div class="header-field">
+                            <input type="text" />
+                            <button type="button" class="btn btn-gradient btn-search">
+                                <img src="images/svg/search.svg" alt="icon"/>
+                            </button>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav">
+                        <li>
+                            <a href="javascript:;">Destinations</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Adventure Styles</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Blog</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Contact</a>
+                        </li>
+                    </ul>
+                    <a href="javascript:;" class="btn btn-gradient btn-md">Quick enquiry</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Tour Heading Section  -->
+        <section class="tour-heading-section">
+            <div class="tour-heading-block">
+                <div class="container">
+                    <div class="tour-heading-text">
+                        <h2 class="h2">Find your next adventure</h2>
+                        <div class="tour-filters">
+                            <div class="filter-block">
+                                <h4>Destination</h4>
+                                <ul class="filter-list">
+                                    <li class="filter-unit">
+                                        <input id="southAmerica" type="radio" name="destination">
+                                        <label for="southAmerica"><span></span> South America</label>
+                                    </li>
+                                    <li class="filter-unit">
+                                        <input id="northAmerica" type="radio" name="destination">
+                                        <label for="northAmerica"><span></span> North America</label>
+                                    </li>
+                                    <li class="filter-unit">
+                                        <input id="middleEast" type="radio" name="destination">
+                                        <label for="middleEast"><span></span> Middle East</label>
+                                    </li>
+                                    <li class="filter-unit">
+                                        <input id="europe" type="radio" name="destination">
+                                        <label for="europe"><span></span> Europe</label>
+                                    </li>
+                                    <li class="filter-unit">
+                                        <input id="asia" type="radio" name="destination">
+                                        <label for="asia"><span></span> Asia</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="filter-block">
+                                <h4>Adventure Style:</h4>
+                                <ul class="filter-list">
+                                    <li class="filter-unit">
+                                        <input id="active" type="radio" name="adventure-style">
+                                        <label for="active"><span></span> Active</label>
+                                    </li>
+                                    <li class="filter-unit">
+                                        <input id="family" type="radio" name="adventure-style">
+                                        <label for="family"><span></span> Family</label>
+                                    </li>
+                                    <li class="filter-unit">
+                                        <input id="bicycle" type="radio" name="adventure-style">
+                                        <label for="bicycle"><span></span> Bicycle</label>
+                                    </li>
+                                    <li class="filter-unit">
+                                        <input id="festivalEvents" type="radio" name="adventure-style">
+                                        <label for="festivalEvents"><span></span> Festival & Events</label>
+                                    </li>
+                                    <li class="filter-unit">
+                                        <input id="cruise" type="radio" name="adventure-style">
+                                        <label for="cruise"><span></span> Cruise</label>
+                                    </li>
+                                    <li class="filter-unit">
+                                        <input id="safari" type="radio" name="adventure-style">
+                                        <label for="safari"><span></span> Safari</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="filter-block">
+                                <h4>Max group size:</h4>
+                                <ul class="filter-list">
+                                    <li class="filter-unit">
+                                        <input id="private" type="radio" name="max-group-size">
+                                        <label for="private"><span></span> Private</label>
+                                    </li>
+                                    <li class="filter-unit">
+                                        <input id="upTo5" type="radio" name="max-group-size">
+                                        <label for="upTo5"><span></span> Up to 5</label>
+                                    </li>
+                                    <li class="filter-unit">
+                                        <input id="upTo10" type="radio" name="max-group-size">
+                                        <label for="upTo10"><span></span> Up to 10</label>
+                                    </li>
+                                    <li class="filter-unit">
+                                        <input id="upTo20" type="radio" name="max-group-size">
+                                        <label for="upTo20"><span></span> Up to 20</label>
+                                    </li>
+                                    <li class="filter-unit">
+                                        <input id="more20" type="radio" name="max-group-size">
+                                        <label for="more20"><span></span> 20 +</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="filter-block">
+                                <h4>Age/Ability:</h4>
+                                <ul class="filter-list">
+                                    <li class="filter-unit">
+                                        <input id="allAbilities" type="radio" name="age-ability">
+                                        <label for="allAbilities"><span></span> All abilities</label>
+                                    </li>
+                                    <li class="filter-unit">
+                                        <input id="adultsOnly" type="radio" name="age-ability">
+                                        <label for="adultsOnly"><span></span> Adults only</label>
+                                    </li>
+                                    <li class="filter-unit">
+                                        <input id="familyFriendly" type="radio" name="age-ability">
+                                        <label for="familyFriendly"><span></span> Family friendly</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="filter-block">
+                                <h4>Keyword:</h4>
+                                <div class="keyword">
+                                    <input type="text" name="" id="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tour Section -->
+        <section class="tour-section">
+            <div class="container">
+                <div class="tour-block">
+                    <h3 class="h3">Your results</h3>
+                    <div class="tour-results">
+                        <div class="tour-unit zoom-effect">
+                            <div class="tour-image">
+                                <img class="full-cover" src="images/tour.jpg" width="387" height="263" alt="tour" />
+                            </div>
+                            <div class="tour-content">
+                                <h5>Red Centre Desert Dreaming</h5>
+                                <div class="tour-details">
+                                    <ul>
+                                        <li>
+                                            <h6>Destination:</h6>
+                                            <p>Australia</p>
+                                        </li>
+                                        <li>
+                                            <h6>Adventure Style:</h6>
+                                            <p>Outback, Hiking, 4WD</p>
+                                        </li>
+                                    </ul>
+                                    <div class="tour-price">
+                                        <p>Price from</p>
+                                        <h4>$1925 AUD</h4>
+                                    </div>
+                                </div>
+                                <a class="btn btn-gradient btn-xs" href="javascript:;">View tour</a>
+                            </div>
+                        </div>
+                        <div class="tour-unit zoom-effect">
+                            <div class="tour-image">
+                                <img class="full-cover" src="images/tour.jpg" width="387" height="263" alt="tour" />
+                            </div>
+                            <div class="tour-content">
+                                <h5>Red Centre Desert Dreaming</h5>
+                                <div class="tour-details">
+                                    <ul>
+                                        <li>
+                                            <h6>Destination:</h6>
+                                            <p>Australia</p>
+                                        </li>
+                                        <li>
+                                            <h6>Adventure Style:</h6>
+                                            <p>Outback, Hiking, 4WD</p>
+                                        </li>
+                                    </ul>
+                                    <div class="tour-price">
+                                        <p>Price from</p>
+                                        <h4>$1925 AUD</h4>
+                                    </div>
+                                </div>
+                                <a class="btn btn-gradient btn-xs" href="javascript:;">View tour</a>
+                            </div>
+                        </div>
+                        <div class="tour-unit zoom-effect">
+                            <div class="tour-image">
+                                <img class="full-cover" src="images/tour.jpg" width="387" height="263" alt="tour" />
+                            </div>
+                            <div class="tour-content">
+                                <h5>Red Centre Desert Dreaming</h5>
+                                <div class="tour-details">
+                                    <ul>
+                                        <li>
+                                            <h6>Destination:</h6>
+                                            <p>Australia</p>
+                                        </li>
+                                        <li>
+                                            <h6>Adventure Style:</h6>
+                                            <p>Outback, Hiking, 4WD</p>
+                                        </li>
+                                    </ul>
+                                    <div class="tour-price">
+                                        <p>Price from</p>
+                                        <h4>$1925 AUD</h4>
+                                    </div>
+                                </div>
+                                <a class="btn btn-gradient btn-xs" href="javascript:;">View tour</a>
+                            </div>
+                        </div>
+                        <div class="tour-unit zoom-effect">
+                            <div class="tour-image">
+                                <img class="full-cover" src="images/tour.jpg" width="387" height="263" alt="tour" />
+                            </div>
+                            <div class="tour-content">
+                                <h5>Red Centre Desert Dreaming</h5>
+                                <div class="tour-details">
+                                    <ul>
+                                        <li>
+                                            <h6>Destination:</h6>
+                                            <p>Australia</p>
+                                        </li>
+                                        <li>
+                                            <h6>Adventure Style:</h6>
+                                            <p>Outback, Hiking, 4WD</p>
+                                        </li>
+                                    </ul>
+                                    <div class="tour-price">
+                                        <p>Price from</p>
+                                        <h4>$1925 AUD</h4>
+                                    </div>
+                                </div>
+                                <a class="btn btn-gradient btn-xs" href="javascript:;">View tour</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- Marqee Section -->
+        <section class="marquee-section">
+            <div class="marquee">
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+                <span>T travel fix newsletter</span>
+            </div>
+        </section>
+
+        <!-- Subscribe Section -->
+        <section class="subscribe-section">
+            <div class="container">
+                <div class="subscribe-block">
+                    <h3>Discover new travel destinations + hear about our exclusive deals</h3>
+                    <form class="subscribe-form" action="">
+                        <div class="input-block">
+                            <label>Name</label>
+                            <input type="text" required />
+                        </div>
+                        <div class="input-block">
+                            <label>Email address</label>
+                            <input type="email" required />
+                        </div>
+                        <button class="btn btn-outline btn-md">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <section class="footer-section">
+            <div class="container">
+                <div class="footer-block">
+                    <a class="footer-brand" href="home.html">
+                        <img class="img-fluid" src="images/svg/logo-white.svg" alt="icon" />
+                    </a>
+                    <div class="footer-content">
+                        <div class="footer-unit">
+                            <h4>Company</h4>
+                            <ul>
+                                <li><a href="javascript:;">About us</a></li>
+                                <li><a href="javascript:;"> Our Partners</a></li>
+                                <li><a href="javascript:;"> Brochure Request</a></li>
+                                <li><a href="javascript:;">Send Quick Enquiry</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-unit">
+                            <h4>Tour operators</h4>
+                            <ul>
+                                <li><a href="javascript:;"> Fez Travel</a></li>
+                                <li><a href="javascript:;">Moose Travel Network</a></li>
+                                <li><a href="javascript:;">Bamba Experience</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-unit">
+                            <h4>Latest deals</h4>
+                            <ul>
+                                <li><a href="javascript:;">Tour marked in category</a></li>
+                                <li><a href="javascript:;"> Tour marked in category</a></li>
+                                <li><a href="javascript:;">Tour marked in category</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-unit">
+                            <h4>Sample</h4>
+                            <ul>
+                                <li><a href="javascript:;">Sample Link</a></li>
+                                <li><a href="javascript:;">Sample Link</a></li>
+                                <li><a href="javascript:;">Sample Link</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </footer>
+
+
+    <!-- JQuery JS -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="bootstrap/bootstrap.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

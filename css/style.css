@@ -195,11 +195,6 @@ a {
     color: var(--red-900);
 }
 
-.bg-gradient {
-    background: rgb(166, 38, 57);
-    background: linear-gradient(90deg, var(--red-700) 0%, var(--red-900) 100%);
-}
-
 
 /* Layout CSS */
 
@@ -227,6 +222,7 @@ main {
 
 .inner-pages main {
     padding-top: 12.5rem;
+    overflow: initial;
 }
 
 @media (max-width:1199px) {
@@ -238,6 +234,7 @@ main {
 @media (max-width:991px) {
     .inner-pages main {
         padding-top: 7.8rem;
+        overflow: hidden;
     }
 }
 
@@ -329,6 +326,26 @@ main {
     box-shadow: inset 0px 0px 0px 2px var(--white);
 }
 
+.btn-white {
+    background-color: var(--white);
+    color: var(--red-900);
+}
+
+.btn-white:hover,
+.btn-white:focus {
+    background-color: var(--white);
+    color: var(--red-900);
+}
+
+.btn-lg {
+    text-transform: uppercase;
+    font-size: max(0.875rem, 12px);
+    padding: 13px 17px;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    border-radius: 50px;
+}
+
 .btn-md {
     text-transform: uppercase;
     font-size: max(1rem, 13px);
@@ -336,6 +353,7 @@ main {
     letter-spacing: 0.1em;
     font-weight: 700;
     border-radius: 50px;
+    flex-shrink: 0;
 }
 
 .btn-xs {
@@ -354,6 +372,19 @@ main {
     letter-spacing: 0.1em;
     font-weight: 700;
     border-radius: 50px;
+}
+
+.btn-print {
+    text-transform: uppercase;
+    font-size: 9px;
+    padding: 14px 16px;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    border-radius: 50px;
+}
+
+.btn-print img {
+    margin-right: 4px;
 }
 
 
@@ -858,6 +889,10 @@ footer {
 
 /* Heading Section */
 
+.heading-section {
+    overflow: hidden;
+}
+
 .heading-image {
     width: 100%;
     height: 33.688rem;
@@ -887,8 +922,25 @@ footer {
     max-width: 50%;
 }
 
+.heading-text-lg {
+    max-width: 71.938rem;
+    margin-bottom: 2.313rem;
+}
+
 .heading-text h2 {
     margin-bottom: 0.688rem;
+}
+
+@media (max-width:1499px) {
+    .heading-text-lg {
+        max-width: 63.938rem;
+    }
+}
+
+@media (max-width:1199px) {
+    .heading-text-lg {
+        max-width: 58.938rem;
+    }
 }
 
 @media (max-width:991px) {
@@ -916,5 +968,8 @@ footer {
     }
     .heading-block {
         padding: 0 0 5px;
+    }
+    .heading-text h2 {
+        padding: 0 30px;
     }
 }
